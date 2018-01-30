@@ -1,16 +1,16 @@
 import unittest
-from validations.validation import Validation
+from src.com.jalasoft.search_files.utils.validation import Validation
 
 class ValidationsTest(unittest.TestCase):
-    def The_value_is_a_number(self):
-        ValueExample = ["Hola", "2", "-2"]
+    def the_value_is_a_number(self):
+        value_example = ["Hola", "2", "-2"]
         message = "El valor es {Value} = {boolean}"
-        for cadena in ValueExample:
-            ValueBoolean = Validation.Isnumber(Validation, cadena)
-            print(message.format(Value=cadena, boolean=ValueBoolean))
-            self.assertTrue(ValueBoolean)
+        for cadena in value_example:
+            value_boolean = Validation.is_number(Validation, cadena)
+            print(message.format(Value=cadena, boolean=value_boolean))
+            self.assertTrue(value_boolean)
 
-    def The_value_is_within_a_range(self):
+    def the_value_is_within_a_range(self):
         pass
 
 

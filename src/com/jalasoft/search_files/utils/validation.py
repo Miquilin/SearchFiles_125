@@ -1,6 +1,4 @@
 import os
-import fnmatch
-
 import re
 
 
@@ -8,33 +6,33 @@ class Validation(object):
     def __init__(self):
         pass
 
-    def Isnumber(self, cadena):
+    def is_number(self, cadena):
         responseBool = cadena.isdigit()
         return responseBool
 
-    def isTheRange(self, number, upperLimit, lowerLimit):
+    def is_the_range(self, number, upperLimit, lowerLimit):
         number = int(number)
         if number >= lowerLimit and number <= upperLimit:
             return True
         else:
             return False
 
-    def AttemptMaximum(self, intentos):
+    def attempt_maximum(self, intentos):
         intentos = int(intentos)
         if intentos <= 5:
             return True
         else:
             return False
 
-    def isPathValid(self, directory):
+    def is_path_valid(self, directory):
         directory = str(directory)
         return os.path.exists(directory)
 
-    def hasValidCharacters(self, cadena):
+    def has_valid_characters(self, cadena):
         cadena = str(cadena)
         return cadena.isalnum()
 
-    def hasValidCharacters1(self, cadena):
+    def has_valid_characters1(self, cadena):
         cadena = str(cadena)
         if (cadena.isalnum()):
             return True

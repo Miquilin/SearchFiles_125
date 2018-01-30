@@ -2,42 +2,42 @@ from src.com.jalasoft.search_files.utils.validation import Validation
 
 
 print("***********PRIMER TEST***********")
-ValueExample = ["Hola", "2", "-2"]
+value_example = ["Hola", "2", "-2"]
 message = "El valor es {Value} = {boolean}"
-for cadena in ValueExample:
-    ValueBoolean = Validation.Isnumber(Validation, cadena)
-    print(message.format(Value=cadena, boolean=ValueBoolean))
+for cadena in value_example:
+    value_boolean = Validation.is_number(Validation, cadena)
+    print(message.format(Value=cadena, boolean=value_boolean))
 
 print("***********SEGUNDO TEST***********")
 upperLimit = 2
 lowerLimit = 0
-ValueExample = ["-1", "0", "1", "2", "3"]
+value_example = ["-1", "0", "1", "2", "3"]
 message = "Los limites son de {lowerLimit} a {upperLimit} el valor es {Value}: {boolean}"
-for cadena in ValueExample:
-    ValueBoolean = Validation.isTheRange(Validation, cadena, upperLimit, lowerLimit)
-    print(message.format(Value=cadena, boolean=ValueBoolean, lowerLimit=lowerLimit, upperLimit=upperLimit))
+for cadena in value_example:
+    value_boolean = Validation.is_the_range(Validation, cadena, upperLimit, lowerLimit)
+    print(message.format(Value=cadena, boolean=value_boolean, lowerLimit=lowerLimit, upperLimit=upperLimit))
 
 print("***********TERCER TEST***********")
-ValueExample = ["0", "1", "2", "3", "4", "5", "6"]
+value_example = ["0", "1", "2", "3", "4", "5", "6"]
 message = "La cantidad maxima de intentos es 5 intento numero {Value}: {boolean}"
-for cadena in ValueExample:
-    ValueBoolean = Validation.AttemptMaximum(Validation, cadena)
-    print(message.format(Value=cadena, boolean=ValueBoolean))
+for cadena in value_example:
+    value_boolean = Validation.attempt_maximum(Validation, cadena)
+    print(message.format(Value=cadena, boolean=value_boolean))
 
 print("***********CUARTO TEST***********")
 
-ValueExample = ["D:\FundacionJALA\Fundations of SW\Leccion2", "C:\Program Files", "Hola como estan"]
+value_example = ["D:\FundacionJALA\Fundations of SW\Leccion2", "C:\Program Files", "Hola como estan"]
 message = "{Value} es: {boolean}"
-for cadena in ValueExample:
-    ValueBoolean = Validation.isPathValid(Validation, cadena)
-    print(message.format(Value=cadena, boolean=ValueBoolean))
+for cadena in value_example:
+    value_boolean = Validation.is_path_valid(Validation, cadena)
+    print(message.format(Value=cadena, boolean=value_boolean))
 
 print("***********QUINTO TEST***********")
-ValueExample = ["text*", "Text", "Text12", ]
+value_example = ["text*", "Text", "Text12", ]
 message = "{Value} es: {boolean}"
-for cadena in ValueExample:
-    ValueBoolean = Validation.hasValidCharacters1(Validation, cadena)
-    print(message.format(Value=cadena, boolean=ValueBoolean))
+for cadena in value_example:
+    value_boolean = Validation.has_valid_characters(Validation, cadena)
+    print(message.format(Value=cadena, boolean=value_boolean))
 
 
 
