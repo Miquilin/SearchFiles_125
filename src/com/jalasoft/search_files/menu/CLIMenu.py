@@ -97,7 +97,6 @@ class CLIMenu (object):
         criteria = input(" >>  ")
         return criteria
 
-
     def summary_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -117,7 +116,8 @@ class CLIMenu (object):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Search Results:")
-        print("%s file(s) and %s folder(s) found" % (self.results_data["number_files"], self.results_data["number_folders"]))
+        print("%s file(s) and %s folder(s) found"
+              % (self.results_data["number_files"], self.results_data["number_folders"]))
         for key, value in self.results_data.items():
             if key == "files":
                 print("   -----")
@@ -133,10 +133,3 @@ class CLIMenu (object):
             print(key + ". ", value)
         choice = input(" >>  ")
         return choice
-
-#menu = CLIMenu()
-#menu.set_summary_data_items("search_for_option", "New Option")
-#value = menu.get_summary_data_items("search_for_option")
-#aux = menu.get_search_for_menu_items("1")
-#print(value)
-#print(aux)
