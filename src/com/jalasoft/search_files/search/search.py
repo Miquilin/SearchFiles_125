@@ -1,13 +1,10 @@
-import os
-from pathlib import Path
 from src.com.jalasoft.search_files.search.factory_asset import FactoryAsset
-from src.com.jalasoft.search_files.search.asset import Asset, File, Directory
+from src.com.jalasoft.search_files.search.asset import File, Directory
 
 
 class Search(object):
     def __init__(self):
         self._path = ""
-
 
     def get_all_directories_and_files(self, path_absolute):
         """Return all directories and files
@@ -38,11 +35,11 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list.
 
                 """
-        result= []
+        result = []
         factory_asset = FactoryAsset()
         factory_asset.create_asset(path_absolute)
         for item in factory_asset.get_list_actual_directories_and_files():
-            if which_search ==0:
+            if which_search == 0:
                 if isinstance(item, File):
                     if common_name in item.get_file_name():
                         result.append(item)
@@ -60,7 +57,6 @@ class Search(object):
 
         return result
 
-
     def search_by_exact_common_name(self, path_absolute, common_name, which_search=0):
         """
                 Args:
@@ -75,14 +71,14 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list that have exact common name
 
                 """
-        result= []
+        result = []
         factory_asset = FactoryAsset()
         factory_asset.create_asset(path_absolute)
         file_name, separator, extension = common_name.partition(".")
         for item in factory_asset.get_list_actual_directories_and_files():
-            if which_search ==0:
+            if which_search == 0:
                 if isinstance(item, File):
-                    if extension != "" :
+                    if extension != "":
                         if file_name == item.get_file_name() and extension == item.get_extension():
                             result.append(item)
                     else:
@@ -117,10 +113,13 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list that have exact common extension
 
                 """
-        result= []
+        result = []
         factory_asset = FactoryAsset()
         factory_asset.create_asset(path_absolute)
-        file_name, separator, extension = common_extension.partition(".")
+        if "." in common_extension:
+            file_name, separator, extension = common_extension.partition(".")
+        else:
+            extension = common_extension
         for item in factory_asset.get_list_actual_directories_and_files():
             if isinstance(item, File):
                 if extension == item.get_extension():
@@ -138,12 +137,12 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list that have less than a size
 
                 """
-        result= []
+        result = []
         factory_asset = FactoryAsset()
         factory_asset.create_asset(path_absolute)
         for item in factory_asset.get_list_actual_directories_and_files():
             if isinstance(item, File):
-                if  item.get_size()/(1024*1224) < size_on_megabites:
+                if item.get_size() / (1024 * 1224) < size_on_megabites:
                     result.append(item)
 
         return result
@@ -158,23 +157,18 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list that have bigger than a size
 
                 """
-        result= []
+        result = []
         factory_asset = FactoryAsset()
         factory_asset.create_asset(path_absolute)
         for item in factory_asset.get_list_actual_directories_and_files():
             if isinstance(item, File):
 
-                if  item.get_size()/(1024*1224) > size_on_megabites:
+                if item.get_size() / (1024 * 1224) > size_on_megabites:
                     result.append(item)
                     print("item.get_size()/(1024*1224)", item.get_size() / (1024 * 1224))
 
-
         return result
-
 
     def print_list_all(self, list_to_be_print):
         for item in list_to_be_print:
-            print(item.get_path() , "test sixe" ,item.get_size()/(1024*1224) )
-
-
-
+            print(item.get_path(), "test sixe", item.get_size() / (1024 * 1224))
