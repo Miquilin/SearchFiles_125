@@ -11,9 +11,9 @@ class SearchTest(unittest.TestCase):
 
     def test_get_all_directories_and_files(self):
         search_test = Search().get_all_directories_and_files(PATH)
-        directories = ['dir1', 'dir2', 'dir3', '.dir4', 'files']
-        files = ['file1.txt', 'file2.dat', 'file3.txt', 'dir_file.txt', 'file1_1.txt', 'diledir2.txt', 'none']
-        # Count 11 files and directories
+        directories = ['dir1', 'dir2', 'files']
+        files = ['file1.txt', 'file2.dat', 'file3.txt', 'dir_file.txt', 'file1_1.txt', 'diledir2.txt', 'none', 'sr.bat']
+        # Count 9 files and directories
         cont = len(directories) + len(files)
         result_cont = len(search_test)
         self.assertEqual(cont, result_cont)
@@ -31,7 +31,7 @@ class SearchTest(unittest.TestCase):
         search_test = Search().search_by_contain_common_name(PATH, "file")
         directories = ['files']
         files = ['file1.txt', 'file2.dat', 'file3.txt', 'dir_file.txt', 'file1_1.txt']
-        # Count 6 files and directories
+        # Count 7 files and directories
         cont = len(directories) + len(files)
         result_count = len(search_test)
         self.assertEqual(cont, result_count)
@@ -149,12 +149,8 @@ class SearchTest(unittest.TestCase):
     def test_search_files_by_less_than_a_size_that_returns_coincidences(self):
         # Search less than 1 MB
         search_test = Search().search_files_by_less_than_a_size(PATH, 1)
-
-    def test_search_files_by_less_than_a_size_that_returns_coincidences(self):
-        # Search less than 1 MB
-        search_test = Search().search_files_by_less_than_a_size(PATH, 1)
         directories = []
-        files = ['file1.txt', 'file2.dat', 'dir_file.txt', 'file1_1.txt', 'diledir2.txt', 'none']
+        files = ['file1.txt', 'file2.dat', 'dir_file.txt', 'file1_1.txt', 'diledir2.txt', 'none', 'sr.bat']
         cont = len(directories) + len(files)
         result_count = len(search_test)
         self.assertEqual(cont, result_count)

@@ -142,7 +142,7 @@ class Search(object):
         factory_asset.create_asset(path_absolute)
         for item in factory_asset.get_list_actual_directories_and_files():
             if isinstance(item, File):
-                if item.get_size() / (1024 * 1224) < size_on_megabites:
+                if item.get_size() / (1024 * 1024) < size_on_megabites:
                     result.append(item)
 
         return result
@@ -163,12 +163,12 @@ class Search(object):
         for item in factory_asset.get_list_actual_directories_and_files():
             if isinstance(item, File):
 
-                if item.get_size() / (1024 * 1224) > size_on_megabites:
+                if item.get_size() / (1024 * 1024) > size_on_megabites:
                     result.append(item)
-                    print("item.get_size()/(1024*1224)", item.get_size() / (1024 * 1224))
+                    print("item.get_size()/(1024*1024)", item.get_size() / (1024 * 1024))
 
         return result
 
     def print_list_all(self, list_to_be_print):
         for item in list_to_be_print:
-            print(item.get_path(), "test sixe", item.get_size() / (1024 * 1224))
+            print(item.get_path(), "test size", item.get_size() / (1024 * 1024))
