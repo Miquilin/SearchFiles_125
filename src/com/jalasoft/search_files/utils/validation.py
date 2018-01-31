@@ -3,16 +3,17 @@ import re
 
 
 class Validation(object):
+
     def __init__(self):
         pass
 
     def is_number(self, cadena):
-        responseBool = cadena.isdigit()
-        return responseBool
+        response_bool = cadena.isdigit()
+        return response_bool
 
-    def is_the_range(self, number, upperLimit, lowerLimit):
+    def is_the_range(self, number, upper_limit, lower_limit):
         number = int(number)
-        if number >= lowerLimit and number <= upperLimit:
+        if number >= lower_limit and number <= upper_limit:
             return True
         else:
             return False
