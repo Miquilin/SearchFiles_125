@@ -1,10 +1,14 @@
-from src.com.jalasoft.search_files.menu.CLIMenuFlow import CLIMenuFlow
+from src.com.jalasoft.search_files.menu.cli_menu_flow import CLIMenuFlow
+from src.com.jalasoft.search_files.menu.cli_menu import CLIMenu
+from src.com.jalasoft.search_files.utils.copy_2_clipboard import Copy2ClipBoard
 
 
 class SearchFile(object):
 
     def main():
         menu = CLIMenuFlow()
+        cli_menu = CLIMenu()
+        copy_to_clip = Copy2ClipBoard()
         while True:
             go_to_search_criteria = False
             choice = menu.show_menu(1)
@@ -54,8 +58,7 @@ class SearchFile(object):
                     menu.show_menu(0)
                 if menu.summary_option_validation(choice):
                     if choice == "1":
-                        print("doing the search")
-                        # here add the search method
+                        menu.start_search_process()
                         go_to_search_results = True
                         go_to_new_search = False
                         choice = menu.show_menu(6)
@@ -70,14 +73,11 @@ class SearchFile(object):
                     menu.show_menu(0)
                 if menu.result_option_validation(choice):
                     if choice == "1":
-                        print(choice, " doing the copy to clipboard")
-                        ## Here the code related to Clipboard
+                        copy_to_clip.copy_to_clip(cli_menu.results_data)
+                        print("Doing the copy to Clipboard")
                         choice = menu.show_menu(6)
                     if choice == "2":
-                        print(choice, " doing a new search")
                         break
 
     if __name__ == "__main__":
-        # menu = CLIMenu()
-        # menu.search_for_menu()
         main()

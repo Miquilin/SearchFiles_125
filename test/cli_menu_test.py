@@ -1,5 +1,5 @@
 import unittest
-from src.com.jalasoft.search_files.menu.CLIMenu import CLIMenu
+from src.com.jalasoft.search_files.menu.cli_menu import CLIMenu
 
 
 class CLIMenuTest(unittest.TestCase):

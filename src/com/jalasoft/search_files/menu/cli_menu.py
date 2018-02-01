@@ -1,8 +1,7 @@
 import os
 
 
-class CLIMenu (object):
-
+class CLIMenu(object):
     MENU_TITLE = "WELCOME TO SEARCH FILE TOOL"
 
     def __init__(self):
@@ -12,7 +11,7 @@ class CLIMenu (object):
             "3": "Content",
             "4": "Size",
             "0": "Exit"
-            }
+        }
         self.search_in_items = {
             "1": "All [including sub-folders]",
             "2": "Current Folder",
@@ -35,18 +34,14 @@ class CLIMenu (object):
             "0": "Exit"
         }
         self.results_data = {
-            "number_files": 3,
-            "number_folders": 1,
-            "files": [
-                "c:\My Documents\share\Test.php",
-                "c:\My Documents\share\MyTest.py",
-                "c:\My Documents\share\WebTesting.docx"
-            ],
-            "folders": ["c:\My Documents\share\Web Design and Testing"]
+            "number_files": "0",
+            "number_folders": "0",
+            "files": [],
+            "folders": []
         }
 
     def get_search_for_menu_items(self, key):
-            return self.search_for_menu_items[key]
+        return self.search_for_menu_items[key]
 
     def set_search_for_menu_items(self, key, value):
         self.search_for_menu_items[key] = value
@@ -62,6 +57,15 @@ class CLIMenu (object):
 
     def set_summary_data_items(self, key, value):
         self.summary_data_entry_items[key] = value
+
+    def get_results_data(self, key):
+        return self.results_data[key]
+
+    def set_results_data(self, key, value):
+        self.results_data[key] = value
+
+    def get_dictionary_size(self, dictionary_name):
+        return len(dictionary_name)
 
     def search_for_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -133,3 +137,4 @@ class CLIMenu (object):
             print(key + ". ", value)
         choice = input(" >>  ")
         return choice
+
