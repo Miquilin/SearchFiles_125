@@ -11,7 +11,7 @@ class SearchTest(unittest.TestCase):
 
     def test_get_all_directories_and_files(self):
         directories = ['dir1', 'dir2', 'files']
-        files = ['file1.txt', 'file2.dat', 'file3.txt', 'dir_file.txt', 'file1_1.txt', 'none', 'diledir2.txt', 'sr.bat']
+        files = ['file1.txt', 'file2.dat', 'file3.txt', 'dir_file.txt', 'file1_1.txt', 'diledir2.txt', 'none', 'sr.bat']
         search_test = Search().get_all_directories_and_files(PATH)
         directories_result = []
         files_result = []
@@ -24,6 +24,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
     def test_search_by_contain_common_name_that_returns_coincidences(self):
@@ -41,6 +43,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
     def test_search_by_contain_common_name_that_does_not_return_coincidences(self):
@@ -65,6 +69,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
     def test_search_by_exact_common_name__without_extension_that_returns_coincidences(self):
@@ -79,6 +85,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
     def test_search_by_exact_common_name_with_extension_that_returns_coincidences(self):
@@ -96,6 +104,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
     def test_search_by_exact_common_extension_with_point_that_returns_coincidences(self):
@@ -113,7 +123,10 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
+
 
     def test_search_by_exact_common_extension_without_point_that_returns_coincidences(self):
         search_test = Search().search_by_exact_common_extension(PATH, "txt")
@@ -130,6 +143,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
     def test_search_by_exact_common_extension_without_point_that_returns_coincidences(self):
@@ -147,6 +162,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
     def test_search_files_by_less_than_a_size_that_returns_coincidences(self):
@@ -165,6 +182,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
     def test_search_files_by_bigger_than_a_size_that_returns_coincidences(self):
@@ -183,6 +202,8 @@ class SearchTest(unittest.TestCase):
             elif isinstance(item, Directory):
                 directories_result.append(item.get_dir_name())
         self.assertEqual(directories, directories_result)
+        files.sort(key=str)
+        files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
 
