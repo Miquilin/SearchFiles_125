@@ -31,6 +31,8 @@ class File(Asset):
     def get_extension(self):
         return self._extension
 
+    def get_separator(self):
+        return self._separator
 
 class Directory(Asset):
 
