@@ -1,5 +1,6 @@
 from src.com.jalasoft.search_files.search.factory_asset import FactoryAsset
 from src.com.jalasoft.search_files.search.asset import File, Directory
+from src.com.jalasoft.search_files.utils.logging_config import logger
 
 
 class Search(object):
@@ -16,9 +17,11 @@ class Search(object):
         Array [Asset]: The return directories and/or files list.
 
         """
+        logger.info("get_all_directories_and_files : Enter")
         factory_asset = FactoryAsset()
         factory_asset.create_asset(path_absolute)
         self.print_list_all(factory_asset.get_list_actual_directories_and_files())
+        logger.info("get_all_directories_and_files : Exit")
         return factory_asset.get_list_actual_directories_and_files()
 
     def search_by_contain_common_name(self, path_absolute, common_name, which_search=0):
