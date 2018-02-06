@@ -5,11 +5,14 @@ class CLIMenu(object):
     MENU_TITLE = "WELCOME TO SEARCH FILE TOOL"
 
     def __init__(self):
+        self.main_menu_items = {
+            "1": "Basic Search",
+            "2": "Advanced Search",
+            "0": "Exit"
+        }
         self.search_for_menu_items = {
             "1": "Name",
             "2": "Extension",
-            "3": "Content",
-            "4": "Size",
             "0": "Exit"
         }
         self.search_in_items = {
@@ -67,44 +70,44 @@ class CLIMenu(object):
     def get_dictionary_size(self, dictionary_name):
         return len(dictionary_name)
 
-    def search_for_menu(self):
+    def main_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
-        print("Search For:")
+        print("Main Menu:")
+        for key, value in self.main_menu_items.items():
+            print(key + ". ", value)
+        print("Select and option:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def basic_search_for_menu(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Basic Search - BSearch For:")
         for key, value in self.search_for_menu_items.items():
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
         return criteria
 
-    def search_for_criteria(self):
+    def basic_search_for_criteria(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
-        print("Introduce the search criteria:")
+        print("Basic Search - Introduce the search criteria:")
         criteria = input(" >>  ")
         return criteria
 
-    def search_in_menu(self):
+    def basic_search_in_path(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
-        print("Search in:")
-        for key, value in self.search_in_items.items():
-            print(key + ". ", value)
-        print("Select an option:")
-        choice = input(" >>  ")
-        return choice
-
-    def search_in_path(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print(self.MENU_TITLE)
-        print("Introduce the folder path:")
+        print("Basic Search - Introduce the folder path:")
         criteria = input(" >>  ")
         return criteria
 
-    def summary_menu(self):
+    def basic_summary_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
-        print("Summary:")
+        print("Basic Search - Summary:")
         print(" - Search For: ", self.summary_data_entry_items["search_for_option"])
         print(" - Criteria: ", self.summary_data_entry_items["search_for_criteria"])
         print(" - Search in: ", self.summary_data_entry_items["search_in_option"])
@@ -116,7 +119,7 @@ class CLIMenu(object):
         choice = input(" >>  ")
         return choice
 
-    def results_menu(self):
+    def basic_results_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Search Results:")
