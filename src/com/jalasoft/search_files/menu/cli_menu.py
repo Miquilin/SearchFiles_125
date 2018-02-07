@@ -10,14 +10,9 @@ class CLIMenu(object):
             "2": "Advanced Search",
             "0": "Exit"
         }
-        self.search_for_menu_items = {
+        self.basic_search_for_menu_items = {
             "1": "Name",
             "2": "Extension",
-            "0": "Exit"
-        }
-        self.search_in_items = {
-            "1": "All [including sub-folders]",
-            "2": "Current Folder",
             "0": "Exit"
         }
         self.summary_items = {
@@ -25,11 +20,10 @@ class CLIMenu(object):
             "2": "Back to main menu",
             "0": "Exit"
         }
-        self.summary_data_entry_items = {
-            "search_for_option": "Name",
-            "search_for_criteria": "Test",
-            "search_in_option": "Current Folder",
-            "search_in_path": "c:\My Documents\share"
+        self.basic_summary_data_entry_items = {
+            "search_for_option": "",
+            "search_for_criteria": "",
+            "search_in_path": ""
         }
         self.result_items = {
             "1": "Copy to clipboard",
@@ -42,24 +36,84 @@ class CLIMenu(object):
             "files": [],
             "folders": []
         }
+        self.advanced_search_for_name_items = {
+            "1": "Name - Contains text",
+            "2": "Name - Exact Text",
+            "3": "None",
+            "0": "Exit"
+        }
+        self.advanced_search_for_size_items = {
+            "1": "Major than 'X' MB.",
+            "2": "Minor than 'X' MB.",
+            "3": "None",
+            "0": "Exit"
+        }
+        self.advanced_search_for_date_items = {
+            "1": "Major than 'X' date",
+            "2": "Minor than 'X' date",
+            "3": "None",
+            "0": "Exit"
+        }
+        self.advanced_summary_data_entry_items = {
+            "search_for_name": "",
+            "search_for_name_criteria": "",
+            "search_for_extension_criteria": "",
+            "search_for_size": "",
+            "search_for_size_criteria": "",
+            "search_for_owner_criteria": "",
+            "search_for_date": "",
+            "search_for_date_criteria": "",
+            "search_for_content_criteria": "",
+            "search_in": "",
+            "search_in_criteria": ""
+        }
+        self.advanced_search_in_items = {
+            "1": "All [including sub-folders]",
+            "2": "Current Folder",
+            "0": "Exit"
+        }
 
-    def get_search_for_menu_items(self, key):
-        return self.search_for_menu_items[key]
+    def get_basic_search_for_menu_items(self, key):
+        return self.basic_search_for_menu_items[key]
 
-    def set_search_for_menu_items(self, key, value):
-        self.search_for_menu_items[key] = value
+    def set_basic_search_for_menu_items(self, key, value):
+        self.basic_search_for_menu_items[key] = value
 
-    def get_search_in_items(self, key):
-        return self.search_in_items[key]
+    def get_basic_summary_data_items(self, key):
+        return self.basic_summary_data_entry_items[key]
 
-    def set_search_in_items(self, key, value):
-        self.search_in_items[key] = value
+    def set_basic_summary_data_items(self, key, value):
+        self.basic_summary_data_entry_items[key] = value
 
-    def get_summary_data_items(self, key):
-        return self.summary_data_entry_items[key]
+    def get_advanced_search_for_name_items(self, key):
+        return self.advanced_search_for_name_items[key]
 
-    def set_summary_data_items(self, key, value):
-        self.summary_data_entry_items[key] = value
+    def set_advanced_search_for_name_items(self, key, value):
+        self.advanced_search_for_name_items[key] = value
+
+    def get_advanced_search_for_size_items(self, key):
+        return self.advanced_search_for_size_items[key]
+
+    def set_advanced_search_for_size_items(self, key, value):
+        self.advanced_search_for_size_items[key] = value
+
+    def get_advanced_search_for_date_items(self, key):
+        return self.advanced_search_for_date_items[key]
+
+    def set_advanced_search_for_date_items(self, key, value):
+        self.advanced_search_for_date_items[key] = value
+
+    def get_advanced_search_in_items(self, key):
+        return self.advanced_search_in_items[key]
+
+    def set_advanced_search_in_items(self, key, value):
+        self.advanced_search_in_items[key] = value
+
+    def get_advanced_summary_data_items(self, key):
+        return self.advanced_summary_data_entry_items[key]
+
+    def set_advanced_summary_data_items(self, key, value):
+        self.advanced_summary_data_entry_items[key] = value
 
     def get_results_data(self, key):
         return self.results_data[key]
@@ -83,8 +137,8 @@ class CLIMenu(object):
     def basic_search_for_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
-        print("Basic Search - BSearch For:")
-        for key, value in self.search_for_menu_items.items():
+        print("Basic Search - Search For:")
+        for key, value in self.basic_search_for_menu_items.items():
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
@@ -108,10 +162,9 @@ class CLIMenu(object):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Basic Search - Summary:")
-        print(" - Search For: ", self.summary_data_entry_items["search_for_option"])
-        print(" - Criteria: ", self.summary_data_entry_items["search_for_criteria"])
-        print(" - Search in: ", self.summary_data_entry_items["search_in_option"])
-        print(" - Path: ", self.summary_data_entry_items["search_in_path"])
+        print(" - Search For: ", self.basic_summary_data_entry_items["search_for_option"])
+        print(" - Criteria: ", self.basic_summary_data_entry_items["search_for_criteria"])
+        print(" - Path: ", self.basic_summary_data_entry_items["search_in_path"])
         print("")
         print("What do you want to do?")
         for key, value in self.summary_items.items():
@@ -119,7 +172,7 @@ class CLIMenu(object):
         choice = input(" >>  ")
         return choice
 
-    def basic_results_menu(self):
+    def results_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Search Results:")
@@ -141,3 +194,113 @@ class CLIMenu(object):
         choice = input(" >>  ")
         return choice
 
+    def advanced_search_for_name_menu(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Search For Name:")
+        for key, value in self.advanced_search_for_name_items.items():
+            print(key + ". ", value)
+        print("Select and option:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_for_name_criteria(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Introduce the 'Name' criteria:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_for_extension_criteria(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Introduce the 'Extension' criteria:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_for_size_menu(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Search For Size:")
+        for key, value in self.advanced_search_for_size_items.items():
+            print(key + ". ", value)
+        print("Select and option:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_for_size_criteria(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Introduce the 'Size' criteria:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_for_owner_criteria(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Introduce the 'Owner' criteria:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_for_date_menu(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Search For Date:")
+        for key, value in self.advanced_search_for_date_items.items():
+            print(key + ". ", value)
+        print("Select and option:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_for_date_criteria(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Introduce the 'Date' criteria:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_for_content_criteria(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Introduce the 'Content' criteria:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_in_menu(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Search For:")
+        for key, value in self.advanced_search_in_items.items():
+            print(key + ". ", value)
+        print("Select and option:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_search_in_criteria_path(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Introduce the folder path:")
+        criteria = input(" >>  ")
+        return criteria
+
+    def advanced_summary_menu(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Summary:")
+        print(" - Search For Name: ", self.advanced_summary_data_entry_items["search_for_name"])
+        print(" - Search For Name Criteria: ", self.advanced_summary_data_entry_items["search_for_name_criteria"])
+        print(" - Search For Extension Criteria: ", self.advanced_summary_data_entry_items["search_for_extension_criteria"])
+        print(" - Search For Size: ", self.advanced_summary_data_entry_items["search_for_size"])
+        print(" - Search For Size Criteria: ", self.advanced_summary_data_entry_items["search_for_size_criteria"])
+        print(" - Search For Owner Criteria: ", self.advanced_summary_data_entry_items["search_for_owner_criteria"])
+        print(" - Search For Date: ", self.advanced_summary_data_entry_items["search_for_date"])
+        print(" - Search For Date Criteria: ", self.advanced_summary_data_entry_items["search_for_date_criteria"])
+        print(" - Search For Content Criteria: ", self.advanced_summary_data_entry_items["search_for_content_criteria"])
+        print(" - Search In: ", self.advanced_summary_data_entry_items["search_in"])
+        print(" - Search In Criteria: ", self.advanced_summary_data_entry_items["search_in_criteria"])
+        print("")
+        print("What do you want to do?")
+        for key, value in self.summary_items.items():
+            print(key + ". ", value)
+        choice = input(" >>  ")
+        return choice
