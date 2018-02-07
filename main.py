@@ -42,7 +42,8 @@ class SearchFile(object):
                     if choice == "1":
                         go_to_search_criteria = False
                         go_to_search_for = True
-                        basic_menu.show_menu(2)
+                        choice = basic_menu.show_menu(2)
+                        continue
                     if choice == "2":
                         go_to_search_for_name_criteria = False
                         go_to_search_for = True
