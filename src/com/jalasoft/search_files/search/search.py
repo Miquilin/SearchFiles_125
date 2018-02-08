@@ -1,6 +1,7 @@
 from src.com.jalasoft.search_files.search.factory_asset import FactoryAsset
 from src.com.jalasoft.search_files.search.asset import File, Directory
 from src.com.jalasoft.search_files.utils.logging_config import logger
+import os,argparse
 
 
 class Search(object):
@@ -77,7 +78,9 @@ class Search(object):
             if search_criteria.get_common_name() != "":
                 temporal_result = self.search_by_contain_common_name(search_criteria.get_common_name(), temporal_result, search_criteria.get_which_search())
                 is_there_a_result = True
-
+        if search_criteria.get_content_word() != "":
+            temporal_result = self.search_files_by_content(temporal_result, search_criteria.get_content_word())
+            is_there_a_result = True
         if is_there_a_result:
             result = temporal_result
         logger.info("get_advance_search : Exit")
@@ -229,6 +232,37 @@ class Search(object):
                     if item_mb >= bigger_size :
                         result.append(item)
         logger.info("search_files_by_size : Exit")
+        return result
+
+    def search_files_by_content(self, actual_search_list, word_search):
+        """
+                Args:
+                actual_search_list [Asset]: The first parameter.
+                word_search (int): The second parameter.
+
+                Return:
+                Array [Asset]: The return files list that contains word_search
+
+                """
+        logger.info("search_files_by_content : Enter")
+        result = []
+        is_word_contains_on_file = False
+        for item in actual_search_list:
+            if isinstance(item, File):
+                file_name = ""
+                if item.get_separator() != "":
+                    file_name = item.get_file_name() + item.get_separator() + item.get_extension()
+                else:
+                    file_name = item.get_file_name()
+                with open(item.get_path()) as f:
+                    for line in f:
+                        if word_search in line:
+                            is_word_contains_on_file = True
+                            print("test::::", word_search)
+                if is_word_contains_on_file:
+                    result.append(item)
+                    is_word_contains_on_file = False
+        logger.info("search_files_by_content : Exit")
         return result
 
     def print_list_all(self, list_to_be_print):

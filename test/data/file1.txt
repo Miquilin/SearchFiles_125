@@ -1,1 +1,10 @@
-sfas
+> El proposito de este programa es buscar palabras dentro de un archivo,
+>> pasandole como argumento otro archivo que contiene una lista de
+>> palabras.
+>>
+>> Funciona a medias, me explico!!! solo lee la primera palabra de cada
+>> linea.
+>> ninoshka ovando salguero QE
+>> Por ejemplo, supongamos esta linea: "uno, dos, tres, cuatro,..." y en
+>> el archivo de palabras, las tengo todas pero, solo me encuentra la
+>> primera.
