@@ -369,7 +369,7 @@ class SearchTest(unittest.TestCase):
         search_criteria.set_is_advance_search(True)
         search_criteria.set_root_path(PATH)
         search_criteria.set_is_include_sub_folders(False)
-        search_criteria.set_content_word("ninoshka")
+        search_criteria.set_content_word("qe")
         search_test = Search().start_a_search(search_criteria)
         directories = []
         files = ['file1.txt']

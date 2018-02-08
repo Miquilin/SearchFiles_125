@@ -4,7 +4,7 @@
 >>
 >> Funciona a medias, me explico!!! solo lee la primera palabra de cada
 >> linea.
->> ninoshka ovando salguero QE
+>> ninoshka ovando salguero QE  qe
 >> Por ejemplo, supongamos esta linea: "uno, dos, tres, cuatro,..." y en
 >> el archivo de palabras, las tengo todas pero, solo me encuentra la
 >> primera.
