@@ -56,7 +56,7 @@ class SearchFile(object):
                 if choice == "0":
                     basic_menu.show_menu(0)
                 if basic_menu.basic_search_for_option_validation(choice):
-                    basic_menu.set_summary_data_items("search_for_option", basic_menu.get_search_for_items(choice))
+                    basic_menu.set_summary_data_items("search_for_option", basic_menu.get_search_for_menu_item(choice))
                     go_to_search_criteria = True
                     go_to_search_in_path = False
                     choice = basic_menu.show_menu(3)
