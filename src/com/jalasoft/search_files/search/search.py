@@ -1,6 +1,7 @@
 from src.com.jalasoft.search_files.search.factory_asset import FactoryAsset
 from src.com.jalasoft.search_files.search.asset import File, Directory
 from src.com.jalasoft.search_files.utils.logging_config import logger
+import os,argparse
 
 
 class Search(object):
@@ -17,13 +18,13 @@ class Search(object):
 
                 """
         logger.info("start_a_search : Enter")
-        result = []
+        result_asert_list = []
         if search_criteria.get_is_advance_search():
-            result = self.get_advance_search(search_criteria)
+            result_asert_list = self.get_advance_search(search_criteria)
         else:
-            result = self.get_basic_search(search_criteria)
+            result_asert_list = self.get_basic_search(search_criteria)
         logger.info("start_a_search : Exit")
-        return result
+        return result_asert_list
 
     def get_basic_search(self, search_criteria):
         """Return all directories and files that were true with basic search criteria
@@ -35,18 +36,18 @@ class Search(object):
 
                         """
         logger.info("get_basic_search : Enter")
-        result = []
+        result_asert_list = []
         factory_asset = FactoryAsset()
         factory_asset.create_asset(search_criteria.get_root_path(), search_criteria.get_is_include_sub_folders())
         if search_criteria.get_extension() != "":
-            result = self.search_by_exact_common_extension(search_criteria.get_extension(), factory_asset.get_list_actual_directories_and_files())
+            result_asert_list = self.search_by_exact_common_extension(search_criteria.get_extension(), factory_asset.get_list_actual_directories_and_files())
         elif search_criteria.get_common_name() != "":
-            result = self.search_by_contain_common_name(search_criteria.get_common_name(), factory_asset.get_list_actual_directories_and_files(), search_criteria.get_which_search())
+            result_asert_list = self.search_by_contain_common_name(search_criteria.get_common_name(), factory_asset.get_list_actual_directories_and_files(), search_criteria.get_which_search())
         else:
-            result = self.get_all_directories_and_files(search_criteria.get_root_path(), search_criteria.get_is_include_sub_folders())
+            result_asert_list = self.get_all_directories_and_files(search_criteria.get_root_path(), search_criteria.get_is_include_sub_folders())
 
         logger.info("get_basic_search : Exit")
-        return result
+        return result_asert_list
 
     def get_advance_search(self, search_criteria):
         """Return all directories and files that were true with advance search criteria
@@ -58,7 +59,7 @@ class Search(object):
 
                                 """
         logger.info("get_advance_search : Enter")
-        result = []
+        result_asert_list = []
         is_there_a_result = False
         factory_asset = FactoryAsset()
         factory_asset.create_asset(search_criteria.get_root_path(), search_criteria.get_is_include_sub_folders())
@@ -77,11 +78,13 @@ class Search(object):
             if search_criteria.get_common_name() != "":
                 temporal_result = self.search_by_contain_common_name(search_criteria.get_common_name(), temporal_result, search_criteria.get_which_search())
                 is_there_a_result = True
-
+        if search_criteria.get_content_word() != "":
+            temporal_result = self.search_files_by_content_on_text_files(temporal_result, search_criteria.get_content_word())
+            is_there_a_result = True
         if is_there_a_result:
-            result = temporal_result
+            result_asert_list = temporal_result
         logger.info("get_advance_search : Exit")
-        return result
+        return result_asert_list
 
     def get_all_directories_and_files(self, root_path, is_sub_directory_search ):
         """Return all directories and files
@@ -114,25 +117,25 @@ class Search(object):
 
                 """
         logger.info("search_by_contain_common_name : Enter")
-        result = []
+        result_asert_list = []
         for item in actual_search_list:
             if which_search == 0:
                 if isinstance(item, File):
                     if common_name in item.get_file_name():
-                        result.append(item)
+                        result_asert_list.append(item)
                 elif isinstance(item, Directory):
                     if common_name in item.get_dir_name():
-                        result.append(item)
+                        result_asert_list.append(item)
             elif which_search == 2:
                 if isinstance(item, File):
                     if common_name in item.get_file_name():
-                        result.append(item)
+                        result_asert_list.append(item)
             elif which_search == 1:
                 if isinstance(item, Directory):
                     if common_name in item.get_dir_name():
-                        result.append(item)
+                        result_asert_list.append(item)
         logger.info("search_by_contain_common_name : Exit")
-        return result
+        return result_asert_list
 
     def search_by_exact_common_name(self, common_name, actual_search_list, which_search=0):
         """
@@ -149,35 +152,35 @@ class Search(object):
 
                 """
         logger.info("search_by_exact_common_name : Enter")
-        result = []
+        result_asert_list = []
         file_name, separator, extension = common_name.partition(".")
         for item in actual_search_list:
             if which_search == 0:
                 if isinstance(item, File):
                     if extension != "":
                         if file_name == item.get_file_name() and extension == item.get_extension():
-                            result.append(item)
+                            result_asert_list.append(item)
                     else:
                         if file_name == item.get_file_name():
-                            result.append(item)
+                            result_asert_list.append(item)
                 elif isinstance(item, Directory):
                     if common_name == item.get_dir_name():
-                        result.append(item)
+                        result_asert_list.append(item)
             elif which_search == 2:
                 if isinstance(item, File):
                     file_name, separator, extension = common_name.partition(".")
                     if extension != "":
                         if file_name == item.get_file_name() and extension == item.get_extension():
-                            result.append(item)
+                            result_asert_list.append(item)
                     else:
                         if common_name == item.get_file_name():
-                            result.append(item)
+                            result_asert_list.append(item)
             elif which_search == 1:
                 if isinstance(item, Directory):
                     if common_name == item.get_dir_name():
-                        result.append(item)
+                        result_asert_list.append(item)
         logger.info("search_by_exact_common_name : Exit")
-        return result
+        return result_asert_list
 
     def search_by_exact_common_extension(self, common_extension, actual_search_list):
         """
@@ -190,7 +193,7 @@ class Search(object):
 
                 """
         logger.info("search_by_exact_common_extension : Enter")
-        result = []
+        result_asert_list = []
         if "." in common_extension:
             file_name, separator, extension = common_extension.partition(".")
         else:
@@ -198,9 +201,9 @@ class Search(object):
         for item in actual_search_list:
             if isinstance(item, File):
                 if extension == item.get_extension():
-                    result.append(item)
+                    result_asert_list.append(item)
         logger.info("search_by_exact_common_extension : Exit")
-        return result
+        return result_asert_list
 
 
     def search_files_by_size(self, actual_search_list, less_size, bigger_size):
@@ -215,21 +218,49 @@ class Search(object):
 
                 """
         logger.info("search_files_by_size : Enter")
-        result = []
+        result_asert_list = []
         for item in actual_search_list:
             if isinstance(item, File):
                 item_mb = item.get_size() / (1024 * 1024)
                 if less_size !=0 and bigger_size !=0:
                     if item_mb <= less_size and item_mb >= bigger_size:
-                        result.append(item)
+                        result_asert_list.append(item)
                 elif less_size !=0 and bigger_size == 0:
                     if item_mb <= less_size :
-                        result.append(item)
+                        result_asert_list.append(item)
                 elif less_size ==0 and bigger_size != 0:
                     if item_mb >= bigger_size :
-                        result.append(item)
+                        result_asert_list.append(item)
         logger.info("search_files_by_size : Exit")
-        return result
+        return result_asert_list
+
+    def search_files_by_content_on_text_files(self, actual_search_list, word_search):
+        """
+                Args:
+                actual_search_list [Asset]: The first parameter.
+                word_search (int): The second parameter.
+
+                Return:
+                Array [Asset]: The return files list that contains word_search
+
+                """
+        logger.info("search_files_by_content : Enter")
+        result_asert_list = []
+        is_word_contains_on_file = False
+        for item in actual_search_list:
+            if isinstance(item, File):
+                file_name = ""
+                if item.get_separator() != "" and item.get_extension() == "txt":
+                    file_name = item.get_file_name() + item.get_separator() + item.get_extension()
+                    with open(item.get_path()) as f:
+                        for line in f:
+                            if word_search in line:
+                                is_word_contains_on_file = True
+                    if is_word_contains_on_file:
+                        result_asert_list.append(item)
+                        is_word_contains_on_file = False
+        logger.info("search_files_by_content : Exit")
+        return result_asert_list
 
     def print_list_all(self, list_to_be_print):
         for item in list_to_be_print:

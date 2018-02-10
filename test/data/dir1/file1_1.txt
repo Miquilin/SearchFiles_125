@@ -9,7 +9,7 @@ class VelocityTest(unittest.TestCase):
 	def test_create_velocity_with_two_positions(self):
 		start_position = Position()
 		end_position = Position(4, 3)
-
+            qa test qe
 		velocity = Velocity(start_position, end_position)
 
 		self.assertIsNotNone(velocity)

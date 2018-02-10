@@ -25,6 +25,7 @@ class SearchCriteria(object):
         self._less_size = 0
         self._bigger_size = 0
         self._which_search = 0
+        self._content_word = ""
 
     def set_which_search(self, which_search):
         self._which_search = which_search
@@ -79,3 +80,9 @@ class SearchCriteria(object):
 
     def get_bigger_size(self):
         return self._bigger_size
+
+    def set_content_word(self, content_word):
+        self._content_word = content_word
+
+    def get_content_word(self):
+        return self._content_word
