@@ -186,12 +186,11 @@ class CLIMenuAdvancedFlow(object):
         search_for_extension_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_extension_criteria")
         search_for_size = self.cli_menu.get_advanced_summary_data_items("search_for_size")
         search_for_size_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_size_criteria")
-
         search_for_owner_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_owner_criteria")
         search_for_date = self.cli_menu.get_advanced_summary_data_items("search_for_date")
-        search_for_date_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_size_criteria")
-        search_for_content_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_size_criteria")
-        search_in = self.cli_menu.get_advanced_summary_data_items("search_for_size_criteria")
+        search_for_date_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_date_criteria")
+        search_for_content_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_content_criteria")
+        search_in = self.cli_menu.get_advanced_summary_data_items("search_in")
         search_in_criteria = self.cli_menu.get_advanced_summary_data_items("search_in_criteria")
 
         search_criteria = SearchCriteria()
@@ -199,22 +198,21 @@ class CLIMenuAdvancedFlow(object):
         search_criteria.set_is_advance_search(True)
         search_criteria.set_common_name(search_for_name_criteria)
         search_criteria.set_extension(search_for_extension_criteria)
+        search_criteria.set_content_word(search_for_content_criteria)
         if search_in == "All [including sub-folders]":
             search_criteria.set_is_include_sub_folders(True)
         elif search_in == "Current Folder":
             search_criteria.set_is_include_sub_folders(False)
-        if search_for_name == "Name - Contains text":
+        elif search_for_name == "Name - Contains text":
             search_criteria.set_is_exact_common_name(False)
         elif search_for_name == "Name - Exact Text":
             search_criteria.set_is_exact_common_name(True)
-        if search_for_size == "Major than 'X' MB.":
+        elif search_for_size == "Major than 'X' MB.":
             search_criteria.set_bigger_size(int(search_for_size_criteria))
         elif search_for_size == "Minor than 'X' MB.":
             search_criteria.set_less_size(int(search_for_size_criteria))
-
         search = Search()
         search_result = search.start_a_search(search_criteria)
-
         self.save_search_result(search_result)
 
     def save_search_result(self, search_result):
