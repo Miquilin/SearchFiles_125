@@ -8,7 +8,7 @@ class Validation(object):
     def is_number(self, cadena):
         logger.info("Starting the method")
         boolean_contain = cadena.isdigit()
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 
@@ -19,7 +19,7 @@ class Validation(object):
             boolean_contain = True
         else:
             boolean_contain = False
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 
@@ -30,7 +30,7 @@ class Validation(object):
             boolean_contain = True
         else:
             boolean_contain = False
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 
@@ -38,7 +38,7 @@ class Validation(object):
         logger.info("Starting the method")
         directory = str(directory)
         boolean_contain = os.path.exists(directory)
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 
@@ -46,7 +46,7 @@ class Validation(object):
         logger.info("Starting the method")
         cadena = str(cadena)
         boolean_contain = cadena.isalnum()
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 

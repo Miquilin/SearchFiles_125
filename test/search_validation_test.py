@@ -1,5 +1,5 @@
 import unittest
-from src.com.jalasoft.search_files.utils.Search_Validation import SearchValidation
+from src.com.jalasoft.search_files.utils.search_validation import SearchValidation
 
 
 class SearchValidationTest(unittest.TestCase):
@@ -87,6 +87,4 @@ class SearchValidationTest(unittest.TestCase):
         self.assertFalse(value_boolean)
 
 
-if __name__ == '__main__':
-    unittest.main()
 

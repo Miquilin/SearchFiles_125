@@ -22,7 +22,7 @@ class SearchValidation(object):
                 boolean_contain = False
             else:
                 boolean_contain = True
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 
@@ -41,7 +41,7 @@ class SearchValidation(object):
                 boolean_contain = False
             else:
                 boolean_contain = True
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 
@@ -53,7 +53,7 @@ class SearchValidation(object):
             boolean_contain = True
         else:
             boolean_contain = False
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 
@@ -66,6 +66,6 @@ class SearchValidation(object):
             boolean_contain = True
         else:
             boolean_contain = False
-        logger.info("The value return is: %s", boolean_contain)
+        logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
