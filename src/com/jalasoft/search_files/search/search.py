@@ -1,6 +1,7 @@
 from src.com.jalasoft.search_files.search.factory_asset import FactoryAsset
 from src.com.jalasoft.search_files.search.asset import File, Directory
 from src.com.jalasoft.search_files.utils.logging_config import logger
+import definition
 
 
 class Search(object):
@@ -254,9 +255,7 @@ class Search(object):
         is_word_contains_on_file = False
         for item in actual_search_list:
             if isinstance(item, File):
-                file_name = ""
-                if item.get_separator() != "" and item.get_extension() == "txt":
-                    file_name = item.get_file_name() + item.get_separator() + item.get_extension()
+                if item.get_separator() != "" and item.get_extension() in definition.SEARCH_BY_CONTENT_ENABLE_EXTENSION_LIST:
                     with open(item.get_path()) as f:
                         for line in f:
                             if word_search in line:
