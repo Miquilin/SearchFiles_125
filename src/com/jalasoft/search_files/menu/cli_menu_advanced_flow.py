@@ -158,7 +158,7 @@ class CLIMenuAdvancedFlow(object):
         return self.cli_menu.get_advanced_search_for_name_items(key)
 
     def set_advanced_search_for_name_menu_items(self, key, value):
-        self.cli_menu.set_basic_search_for_menu_items(key, value)
+        self.cli_menu.set_advanced_search_for_name_items(key, value)
 
     def get_advanced_search_for_size_menu_items(self, key):
         return self.cli_menu.get_advanced_search_for_size_items(key)
@@ -176,7 +176,7 @@ class CLIMenuAdvancedFlow(object):
         return self.cli_menu.get_advanced_search_in_items(key)
 
     def set_advanced_search_in_items(self, key, value):
-        self.set_advanced_search_in_items(key, value)
+        self.cli_menu.set_advanced_search_in_items(key, value)
 
     def start_search_process(self):
         self.files = []
