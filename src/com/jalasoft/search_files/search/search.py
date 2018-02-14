@@ -78,6 +78,12 @@ class Search(object):
             if search_criteria.get_common_name() != "":
                 temporal_result = self.search_by_contain_common_name(search_criteria.get_common_name(), temporal_result, search_criteria.get_which_search())
                 is_there_a_result = True
+        if search_criteria.get_less_creation_date() is not None or search_criteria.get_bigger_creation_date() is not None:
+            temporal_result = self.search_files_by_creation_date(temporal_result, search_criteria.get_less_creation_date(), search_criteria.get_bigger_creation_date(), search_criteria.get_which_search())
+            is_there_a_result = True
+        if search_criteria.get_less_modification_date() is not None or search_criteria.get_bigger_modification_date() is not None:
+            temporal_result = self.search_files_by_modification_date(temporal_result, search_criteria.get_less_modification_date(), search_criteria.get_bigger_modification_date(), search_criteria.get_which_search())
+            is_there_a_result = True
         if search_criteria.get_content_word() != "":
             temporal_result = self.search_files_by_content_on_text_files(temporal_result, search_criteria.get_content_word())
             is_there_a_result = True
@@ -222,13 +228,13 @@ class Search(object):
         for item in actual_search_list:
             if isinstance(item, File):
                 item_mb = item.get_size() / (1024 * 1024)
-                if less_size !=0 and bigger_size !=0:
+                if less_size != 0 and bigger_size != 0:
                     if item_mb <= less_size and item_mb >= bigger_size:
                         result_asert_list.append(item)
-                elif less_size !=0 and bigger_size == 0:
+                elif less_size != 0 and bigger_size == 0:
                     if item_mb <= less_size :
                         result_asert_list.append(item)
-                elif less_size ==0 and bigger_size != 0:
+                elif less_size == 0 and bigger_size != 0:
                     if item_mb >= bigger_size :
                         result_asert_list.append(item)
         logger.info("search_files_by_size : Exit")
@@ -244,7 +250,7 @@ class Search(object):
                 Array [Asset]: The return files list that contains word_search
 
                 """
-        logger.info("search_files_by_content : Enter")
+        logger.info("search_files_by_content_on_text_files : Enter")
         result_asert_list = []
         is_word_contains_on_file = False
         for item in actual_search_list:
@@ -258,6 +264,114 @@ class Search(object):
                         result_asert_list.append(item)
                         is_word_contains_on_file = False
         logger.info("search_files_by_content : Exit")
+        return result_asert_list
+
+    def search_files_by_creation_date(self, actual_search_list, less_date, bigger_date, which_search=0):
+        """
+                Args:
+                actual_search_list [Asset]: The first parameter.
+                less_date [Date]: The second parameter.
+                bigger_date [Date]: The third parameter.
+                which_search (int): It can contains three values:
+                    0: Search on Files ad directories
+                    1: Search on Directories
+                    2: Search on Files
+
+                Return:
+                Array [Asset]: The return directories and/or files list.
+
+                """
+        logger.info("search_files_by_creation_date : Enter")
+        result_asert_list = []
+        for item in actual_search_list:
+            if which_search == 0:
+                if isinstance(item, File) or isinstance(item, Directory):
+                    if less_date is not None and bigger_date is not None:
+                        if less_date >= item.get_st_creation_time() >= bigger_date:
+                            result_asert_list.append(item)
+                    elif less_date is not None and bigger_date is None:
+                        if item.get_st_creation_time() <= less_date:
+                            result_asert_list.append(item)
+                    elif less_date is None and bigger_date is not None:
+                        if item.get_st_creation_time() >= bigger_date:
+                            result_asert_list.append(item)
+            elif which_search == 2:
+                if isinstance(item, File):
+                    if less_date is not None and bigger_date is not None:
+                        if less_date >= item.get_st_creation_time() >= bigger_date:
+                            result_asert_list.append(item)
+                    elif less_date is not None and bigger_date is None:
+                        if item.get_st_creation_time() <= less_date:
+                            result_asert_list.append(item)
+                    elif less_date is None and bigger_date is not None:
+                        if item.get_st_creation_time() >= bigger_date:
+                            result_asert_list.append(item)
+            elif which_search == 1:
+                if isinstance(item, Directory):
+                    if less_date is not None and bigger_date is not None:
+                        if less_date >= item.get_st_creation_time() >= bigger_date:
+                            result_asert_list.append(item)
+                    elif less_date is not None and bigger_date is None:
+                        if item.get_st_creation_time() <= less_date:
+                            result_asert_list.append(item)
+                    elif less_date is None and bigger_date is not None:
+                        if item.get_st_creation_time() >= bigger_date:
+                            result_asert_list.append(item)
+        logger.info("search_files_by_creation_date : Exit")
+        return result_asert_list
+
+    def search_files_by_modification_date(self, actual_search_list, less_date, bigger_date, which_search=0):
+        """
+                Args:
+                actual_search_list [Asset]: The first parameter.
+                less_date [Date]: The second parameter.
+                bigger_date [Date]: The third parameter.
+                which_search (int): It can contains three values:
+                    0: Search on Files ad directories
+                    1: Search on Directories
+                    2: Search on Files
+
+                Return:
+                Array [Asset]: The return directories and/or files list.
+
+                """
+        logger.info("search_files_by_modification_date : Enter")
+        result_asert_list = []
+        for item in actual_search_list:
+            if which_search == 0:
+                if isinstance(item, File) or isinstance(item, Directory):
+                    if less_date is not None and bigger_date is not None:
+                        if less_date >= item.get_st_modification_time() >= bigger_date:
+                            result_asert_list.append(item)
+                    elif less_date is not None and bigger_date is None:
+                        if item.get_st_modification_time() <= less_date:
+                            result_asert_list.append(item)
+                    elif less_date is None and bigger_date is not None:
+                        if item.get_st_modification_time() >= bigger_date:
+                            result_asert_list.append(item)
+            elif which_search == 2:
+                if isinstance(item, File):
+                    if less_date is not None and bigger_date is not None:
+                        if less_date >= item.get_st_modification_time() >= bigger_date:
+                            result_asert_list.append(item)
+                    elif less_date is not None and bigger_date is None:
+                        if item.get_st_modification_time() <= less_date:
+                            result_asert_list.append(item)
+                    elif less_date is None and bigger_date is not None:
+                        if item.get_st_modification_time() >= bigger_date:
+                            result_asert_list.append(item)
+            elif which_search == 1:
+                if isinstance(item, Directory):
+                    if less_date is not None and bigger_date is not None:
+                        if less_date >= item.get_st_modification_time() >= bigger_date:
+                            result_asert_list.append(item)
+                    elif less_date is not None and bigger_date is None:
+                        if item.get_st_modification_time() <= less_date:
+                            result_asert_list.append(item)
+                    elif less_date is None and bigger_date is not None:
+                        if item.get_st_modification_time() >= bigger_date:
+                            result_asert_list.append(item)
+        logger.info("search_files_by_modification_date : Exit")
         return result_asert_list
 
     def print_list_all(self, list_to_be_print):
