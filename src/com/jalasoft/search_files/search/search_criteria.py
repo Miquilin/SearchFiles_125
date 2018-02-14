@@ -6,10 +6,11 @@ class SearchCriteria(object):
         """
         initial data by default
                                 Args:
-                                which_search (int): It can contains three values:
-                                    0: Search on Files ad directories
-                                    1: Search on Directories
-                                    2: Search on Files
+
+                                    which_search (int): It can contains three values:
+                                        0: Search on Files ad directories
+                                        1: Search on Directories
+                                        2: Search on Files
 
 
                                 """
