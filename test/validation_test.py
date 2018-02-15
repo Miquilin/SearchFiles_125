@@ -107,5 +107,3 @@ class ValidationTest(unittest.TestCase):
         self.assertFalse(value_boolean)
 
 
-if __name__ == '__main__':
-    unittest.main()
