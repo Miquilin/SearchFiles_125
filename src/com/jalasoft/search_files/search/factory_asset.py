@@ -1,5 +1,6 @@
 import os
-from src.com.jalasoft.search_files.search.asset import Asset, File, Directory
+from src.com.jalasoft.search_files.search.file import File
+from src.com.jalasoft.search_files.search.directory import Directory
 
 
 class FactoryAsset(object):

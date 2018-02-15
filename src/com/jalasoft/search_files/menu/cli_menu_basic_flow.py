@@ -1,7 +1,8 @@
 from src.com.jalasoft.search_files.menu.cli_menu import CLIMenu
 from src.com.jalasoft.search_files.utils.validation import Validation
 from src.com.jalasoft.search_files.search.search import Search
-from src.com.jalasoft.search_files.search.asset import File, Directory
+from src.com.jalasoft.search_files.search.file import File
+from src.com.jalasoft.search_files.search.directory import Directory
 from src.com.jalasoft.search_files.search.search_criteria import SearchCriteria
 import sys
 
