@@ -81,7 +81,7 @@ class CLIMenuBasicFlow(object):
     def set_summary_data_items(self, key, value):
         self.cli_menu.set_basic_summary_data_items(key, value)
 
-    def get_search_for_items(self, key):
+    def get_search_for_menu_item(self, key):
         return self.cli_menu.get_basic_search_for_menu_items(key)
 
     def set_search_for_menu_item(self, key, value):
@@ -94,38 +94,26 @@ class CLIMenuBasicFlow(object):
         if self.cli_menu.get_basic_summary_data_items("search_for_option") == "Name":
             path = self.cli_menu.get_basic_summary_data_items("search_in_path")
             criteria = self.cli_menu.get_basic_summary_data_items("search_for_criteria")
-
             search_criteria = SearchCriteria()
             search_criteria.set_is_advance_search(False)
             search_criteria.set_root_path(path)
             search_criteria.set_common_name(criteria)
             search_criteria.set_is_include_sub_folders(True)
-
             search = Search()
             search_result = search.start_a_search(search_criteria)
-
-            #self.cli_menu.set_results_data("number_files", "0")
-            #self.cli_menu.set_results_data("number_folders", "0")
-            #self.cli_menu.set_results_data("files", [])
-            #self.cli_menu.set_results_data("folders", [])
-            #print(self.cli_menu.results_data)
-
             self.save_search_result(search_result)
 
         # Basic Search - Doing the search by Extension
         if self.cli_menu.get_basic_summary_data_items("search_for_option") == "Extension":
             path = self.cli_menu.get_basic_summary_data_items("search_in_path")
             criteria = self.cli_menu.get_basic_summary_data_items("search_for_criteria")
-
             search_criteria = SearchCriteria()
             search_criteria.set_is_advance_search(False)
             search_criteria.set_root_path(path)
             search_criteria.set_extension(criteria)
             search_criteria.set_is_include_sub_folders(True)
-
             search = Search()
             search_result = search.start_a_search(search_criteria)
-
             self.save_search_result(search_result)
 
     def save_search_result(self, search_result):
