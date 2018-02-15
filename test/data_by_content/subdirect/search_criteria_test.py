@@ -6,10 +6,10 @@ from src.com.jalasoft.search_files.search.asset import File, Directory
 
 
 PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
-PATH_SEARCH_BY_CONTENT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_by_content")
+
 
 class SearchTest(unittest.TestCase):
-    """ Test to verify that can list all directories"""
+    """ Test to verify that can list all directories Ninoshka"""
 
     def test_get_all_directories_and_files_with_include_sub_folders(self):
         search_criteria = SearchCriteria()
@@ -373,30 +373,6 @@ class SearchTest(unittest.TestCase):
         search_test = Search().start_a_search(search_criteria)
         directories = []
         files = ['file1.txt']
-        directories_result = []
-        files_result = []
-        for item in search_test:
-            if isinstance(item, File):
-                if item.get_extension() != "":
-                    files_result.append(item.get_file_name() + item.get_separator() + item.get_extension())
-                else:
-                    files_result.append(item.get_file_name())
-            elif isinstance(item, Directory):
-                directories_result.append(item.get_dir_name())
-        self.assertEqual(directories, directories_result)
-        files.sort(key=str)
-        files_result.sort(key=str)
-        self.assertEqual(files, files_result)
-
-    def test_advance_search_by_content_that_returns_coincidences_with_allowed_extension(self):
-        search_criteria = SearchCriteria()
-        search_criteria.set_is_advance_search(True)
-        search_criteria.set_root_path(PATH_SEARCH_BY_CONTENT)
-        search_criteria.set_is_include_sub_folders(True)
-        search_criteria.set_content_word("Ninoshka")
-        search_test = Search().start_a_search(search_criteria)
-        directories = []
-        files = ['file1 - copia.log', "file1.txt", "example.xml", "install.log", "search_criteria_test.py", "The Complete List Blog.html", "style.css"]
         directories_result = []
         files_result = []
         for item in search_test:

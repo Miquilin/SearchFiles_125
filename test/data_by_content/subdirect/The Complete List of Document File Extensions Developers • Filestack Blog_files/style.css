@@ -1,0 +1,113 @@
+/*
+Theme Name: Bulmapress Ninoshka 
+Theme URI: http://bulmapress.com/
+Author: Scops
+Author URI: http://scops.com
+Description: A modern wordpress starter theme built on top of underscores (by Autommatic) with Bulma.io mobile-first flexbox frontend.
+Version: 0.0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bulmapress
+Tags: one-column, two-columns, three-columns, four-columns, grid-layout, featured-images, accessibility-ready, featured-images, microformats, sticky-post, threaded-comments, translation-ready, blog, news, photography, portfolio
+
+Bulmapress is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Main stylesheet: /frontend/bulmapress/css/bulmapress.css
+
+Bulma Sass: /frontend/bulma/sass/
+Bulmapress Sass: /frontend/bulmapress/sass/ */
+
+.wpcf7-text,
+.wpcf7-textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: .875rem;
+  height: 2.25em;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
+  position: relative;
+  vertical-align: top;
+  background-color: #fff;
+  border-color: #dbdbdb;
+  color: #363636;
+  -webkit-box-shadow: inset 0 1px 2px rgba(10,10,10,0.1);
+  box-shadow: inset 0 1px 2px rgba(10,10,10,0.1);
+  max-width: 100%;
+  width: 100%;
+}
+
+.wpcf7-textarea {
+    max-height: 600px;
+    min-height: 120px;
+}
+
+.wpcf7-submit {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    font-size: .875rem;
+    height: 2.25em;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: calc(0.625em - 1px);
+    padding-right: calc(0.625em - 1px);
+    padding-top: calc(0.375em - 1px);
+    position: relative;
+    vertical-align: top;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #fff;
+    border-color: #dbdbdb;
+    color: #363636;
+    cursor: pointer;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #ef4a25;
+    border-color: transparent;
+    color: #fff;
+}
+
+.margin-centered {
+  margin: 0 auto;
+}
+
+figure.aligncenter {
+  margin: 0 auto !important;
+}
