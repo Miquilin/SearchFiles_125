@@ -3,7 +3,8 @@ import os
 import datetime
 from src.com.jalasoft.search_files.search.search import Search
 from src.com.jalasoft.search_files.search.search_criteria import SearchCriteria
-from src.com.jalasoft.search_files.search.asset import File, Directory
+from src.com.jalasoft.search_files.search.file import File
+from src.com.jalasoft.search_files.search.directory import Directory
 
 
 PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")

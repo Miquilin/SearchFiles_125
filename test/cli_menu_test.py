@@ -619,3 +619,7 @@ class CLIMenuTest(unittest.TestCase):
     def test_advanced_summary_menu_is_retuning_a_valid_special_characters_option(self, input):
         menu = CLIMenu()
         assert menu.advanced_summary_menu() == '*_-\[]/()'
+
+
+if __name__ == "__main__":
+    unittest.main()

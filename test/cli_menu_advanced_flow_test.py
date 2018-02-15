@@ -603,3 +603,7 @@ class CLIMenuTest(unittest.TestCase):
         menu = CLIMenuAdvancedFlow()
         option = menu.get_advanced_search_in_items("0")
         self.assertEqual(option, "Exit")
+
+
+if __name__ == "__main__":
+    unittest.main()
