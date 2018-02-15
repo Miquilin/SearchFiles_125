@@ -1,13 +1,16 @@
 import os
+import re
+import datetime
 from src.com.jalasoft.search_files.utils.logging_config import logger
+
 
 class Validation(object):
     def __init__(self):
         pass
 
-    def is_number(self, cadena):
+    def is_number(self, string_value):
         logger.info("Starting the method")
-        boolean_contain = cadena.isdigit()
+        boolean_contain = string_value.isdigit()
         logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
@@ -23,10 +26,10 @@ class Validation(object):
         logger.info("Exit method")
         return boolean_contain
 
-    def attempt_maximum(self, intentos):
+    def attempt_maximum(self, attempts):
         logger.info("Starting the method")
-        intentos = int(intentos)
-        if intentos <= 5:
+        attempts = int(attempts)
+        if attempts <= 5:
             boolean_contain = True
         else:
             boolean_contain = False
@@ -42,15 +45,46 @@ class Validation(object):
         logger.info("Exit method")
         return boolean_contain
 
-    def has_valid_characters(self, cadena):
+    def has_valid_characters(self, string_value):
         logger.info("Starting the method")
-        cadena = str(cadena)
-        boolean_contain = cadena.isalnum()
+        string_value = str(string_value)
+        boolean_contain = string_value.isalnum()
         logger.info("The value returned is: %s", boolean_contain)
         logger.info("Exit method")
         return boolean_contain
 
+    def is_blank(self, string_value):
+        logger.info("Starting the method")
+        string_value = str(string_value)
+        if string_value and string_value.strip():
+            boolean_contain = False
+        else:
+            boolean_contain = True
+        logger.info("The value returned is: %s", boolean_contain)
+        logger.info("Exit method")
+        return boolean_contain
 
+    def is_valid_date(self, str_date):
+        logger.info("Starting the method")
+        regex = re.compile("(\d{1,4})/(\d{1,2})/(\d{1,2})")
+        match = regex.match(str_date)
+        if match:
+            year, month, day = match.groups()
+            if len(year) == 4:
+                date_format = "%Y/%m/%d"
+            else:
+                date_format = "%y/%m/%d"
+            try:
+                datetime.datetime.strptime(str_date, date_format)
+            except ValueError:
+                logger.info("The value returned is: %s", False)
+                return False
+            boolean_contain = True
+        else:
+            boolean_contain = False
+        logger.info("The value returned is: %s", boolean_contain)
+        logger.info("Exit method")
+        return boolean_contain
 
 
 
