@@ -1,5 +1,6 @@
 from src.com.jalasoft.search_files.search.factory_asset import FactoryAsset
-from src.com.jalasoft.search_files.search.asset import File, Directory
+from src.com.jalasoft.search_files.search.file import File
+from src.com.jalasoft.search_files.search.directory import Directory
 from src.com.jalasoft.search_files.utils.logging_config import logger
 import definition
 
