@@ -25,6 +25,11 @@ class SearchCriteria(object):
         self._less_size = 0
         self._bigger_size = 0
         self._which_search = 0
+        self._content_word = ""
+        self._less_creation_date = None
+        self._bigger_creation_date = None
+        self._less_modification_date = None
+        self._bigger_modification_date = None
 
     def set_which_search(self, which_search):
         self._which_search = which_search
@@ -79,3 +84,34 @@ class SearchCriteria(object):
 
     def get_bigger_size(self):
         return self._bigger_size
+
+    def set_content_word(self, content_word):
+        self._content_word = content_word
+
+    def get_content_word(self):
+        return self._content_word
+
+    def set_less_creation_date(self, less_creation_date):
+        self._less_creation_date = less_creation_date
+
+    def get_less_creation_date(self):
+        return self._less_creation_date
+
+    def set_bigger_creation_date(self, bigger_creation_date):
+        self._bigger_creation_date = bigger_creation_date
+
+    def get_bigger_creation_date(self):
+        return self._bigger_creation_date
+
+    def set_less_modification_date(self, less_modification_date):
+        self._less_modification_date = less_modification_date
+
+    def get_less_modification_date(self):
+        return self._less_modification_date
+
+    def set_bigger_modification_date(self, bigger_modification_date):
+        self._bigger_modification_date = bigger_modification_date
+
+    def get_bigger_modification_date(self):
+        return self._bigger_modification_date
+
