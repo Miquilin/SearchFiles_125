@@ -1,11 +1,8 @@
 import unittest
 import os
 import win32security
-import win32api
 from src.com.jalasoft.search_files.search.search import Search
 from src.com.jalasoft.search_files.search.search_criteria import SearchCriteria
-from src.com.jalasoft.search_files.search.file import File
-from src.com.jalasoft.search_files.search.directory import Directory
 
 
 PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
@@ -37,7 +34,7 @@ class SearchByOwnerTest(unittest.TestCase):
         search_criteria.set_root_path(PATH)
         search_criteria.set_is_include_sub_folders(True)
 
-        owner_name_root_path = "pepito"
+        owner_name_root_path = "non owner"
         search_criteria.set_owner(owner_name_root_path)
         search_test = Search().start_a_search(search_criteria)
         for item in search_test:
@@ -46,6 +43,3 @@ class SearchByOwnerTest(unittest.TestCase):
             sid = sd.GetSecurityDescriptorOwner()
             owner_name = win32security.LookupAccountSid(None, sid)[0]
             self.assertEqual("", item.get_owner())
-
-if __name__ == "__main__":
-    unittest.main()

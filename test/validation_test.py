@@ -148,6 +148,3 @@ class ValidationTest(unittest.TestCase):
         value_boolean = validation.is_valid_date(value_example)
         self.assertFalse(value_boolean)
 
-
-if __name__ == "__main__":
-    unittest.main()

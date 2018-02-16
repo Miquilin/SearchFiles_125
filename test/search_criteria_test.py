@@ -437,6 +437,3 @@ class SearchTest(unittest.TestCase):
         files_result.sort(key=str)
         self.assertEqual(files, files_result)
 
-
-if __name__ == "__main__":
-    unittest.main()

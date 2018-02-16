@@ -237,7 +237,3 @@ class CLIMenuBasicFlowTest(unittest.TestCase):
         menu = CLIMenuBasicFlow()
         option = menu.get_search_for_menu_item("0")
         self.assertEqual(option, "Exit")
-
-
-if __name__ == "__main__":
-    unittest.main()

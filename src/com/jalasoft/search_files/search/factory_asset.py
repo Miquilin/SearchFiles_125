@@ -1,6 +1,5 @@
 import os
 import win32security
-import win32api
 from src.com.jalasoft.search_files.search.file import File
 from src.com.jalasoft.search_files.search.directory import Directory
 from src.com.jalasoft.search_files.utils.logging_config import logger
@@ -28,7 +27,6 @@ class FactoryAsset(object):
 
                         """
         logger.info("Starting the method")
-        result = []
         for root, directories, files in os.walk(path):
             if self._first_root_path == "":
                 self._first_root_path = root
@@ -55,16 +53,38 @@ class FactoryAsset(object):
         logger.info("Ending the method")
 
     def get_list_actual_directories_and_files(self):
+        """ Return all directories and/or files that are present under root path that sent on  function
+                                Args:
+
+                                Return:
+                                Array [Asset]: The return directories and/or files list.
+
+                                """
         logger.info("Starting the method")
         logger.info("Ending the method")
         return self._list_actual_directories_and_files
 
     def get_first_root_path(self):
+        """Return the first path to search on the actual directory
+                                Args:
+
+                                Return:
+                                Array [Asset]: List of directories and/or files list.
+
+                                """
         logger.info("Starting the method")
         logger.info("Ending the method")
         return self._first_root_path
 
     def get_owner(self, path):
+        """Return actual owner of a Windows path
+                                Args:
+                                path (String): The first parameter.
+
+                                Return:
+                                owner [String]: Return actual owner of a Windows path
+
+                                """
         logger.info("Starting the method")
         security_description = win32security.GetFileSecurity(path,
                                            win32security.OWNER_SECURITY_INFORMATION)

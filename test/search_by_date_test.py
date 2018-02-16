@@ -156,6 +156,3 @@ class SearchByDateTest(unittest.TestCase):
         files.sort(key=str)
         files_result.sort(key=str)
         self.assertEqual(files, files_result)
-
-if __name__ == "__main__":
-    unittest.main()

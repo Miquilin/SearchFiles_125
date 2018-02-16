@@ -45,6 +45,3 @@ class Copy2ClipBoardTest(unittest.TestCase):
         json_result = copy2clipboard.copy_to_clip(dictionary)
         self.assertEqual(pyperclip.paste(), json_expected)
 
-
-if __name__ == "__main__":
-    unittest.main()
