@@ -1,5 +1,5 @@
 import unittest
-from src.com.jalasoft.search_files.utils.validation import Validation
+from src.com.jalasoft.search_files.utils.menu_validation import Validation
 
 
 class ValidationTest(unittest.TestCase):

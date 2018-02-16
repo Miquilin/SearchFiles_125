@@ -86,5 +86,16 @@ class SearchValidationTest(unittest.TestCase):
         value_boolean = SearchValidation().is_less_than_or_equal(num_bit, num_mega_bit)
         self.assertFalse(value_boolean)
 
+    def test_is_windows_method_returns_true_in_windows_os(self):
+        val = SearchValidation()
+        value_boolean = val.is_windows()
+        self.assertTrue(value_boolean)
+
+    def test_is_linux_method_returns_false_in_windows_os(self):
+        val = SearchValidation()
+        value_boolean = val.is_linux()
+        self.assertFalse(value_boolean)
+
+
 
 
