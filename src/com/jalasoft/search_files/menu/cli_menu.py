@@ -1,10 +1,12 @@
 import os
+from src.com.jalasoft.search_files.utils.logging_config import logger
 
 
 class CLIMenu(object):
     MENU_TITLE = "WELCOME TO SEARCH FILE TOOL"
 
     def __init__(self):
+        logger.info("Starting the method")
         self.main_menu_items = {
             "1": "Basic Search",
             "2": "Advanced Search",
@@ -72,59 +74,121 @@ class CLIMenu(object):
             "2": "Current Folder",
             "0": "Exit"
         }
+        logger.info("Ending the method")
 
     def get_basic_search_for_menu_items(self, key):
-        return self.basic_search_for_menu_items[key]
+        logger.info("Starting the method")
+        search_for_menu_item = self.basic_search_for_menu_items[key]
+        logger.debug("The value returned is: %s", search_for_menu_item)
+        logger.info("ending the method")
+        return search_for_menu_item
 
     def set_basic_search_for_menu_items(self, key, value):
+        logger.info("Starting the method")
         self.basic_search_for_menu_items[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
 
     def get_basic_summary_data_items(self, key):
-        return self.basic_summary_data_entry_items[key]
+        logger.info("Starting the method")
+        summary_data_item = self.basic_summary_data_entry_items[key]
+        logger.debug("The value returned is: %s", summary_data_item)
+        logger.info("ending the method")
+        return summary_data_item
 
     def set_basic_summary_data_items(self, key, value):
+        logger.info("Starting the method")
         self.basic_summary_data_entry_items[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
 
     def get_advanced_search_for_name_items(self, key):
-        return self.advanced_search_for_name_items[key]
+        logger.info("Starting the method")
+        search_for_name_item = self.advanced_search_for_name_items[key]
+        logger.debug("The value returned is: %s", search_for_name_item)
+        logger.info("ending the method")
+        return search_for_name_item
 
     def set_advanced_search_for_name_items(self, key, value):
+        logger.info("Starting the method")
         self.advanced_search_for_name_items[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
 
     def get_advanced_search_for_size_items(self, key):
-        return self.advanced_search_for_size_items[key]
+        logger.info("Starting the method")
+        search_for_size_items = self.advanced_search_for_size_items[key]
+        logger.debug("The value returned is: %s", search_for_size_items)
+        logger.info("ending the method")
+        return search_for_size_items
 
     def set_advanced_search_for_size_items(self, key, value):
+        logger.info("Starting the method")
         self.advanced_search_for_size_items[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
 
     def get_advanced_search_for_date_items(self, key):
-        return self.advanced_search_for_date_items[key]
+        logger.info("Starting the method")
+        search_for_date_item = self.advanced_search_for_date_items[key]
+        logger.debug("The value returned is: %s", search_for_date_item)
+        logger.info("ending the method")
+        return search_for_date_item
 
     def set_advanced_search_for_date_items(self, key, value):
+        logger.info("Starting the method")
         self.advanced_search_for_date_items[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
 
     def get_advanced_search_in_items(self, key):
-        return self.advanced_search_in_items[key]
+        logger.info("Starting the method")
+        search_in_item = self.advanced_search_in_items[key]
+        logger.debug("The value returned is: %s", search_in_item)
+        logger.info("ending the method")
+        return search_in_item
 
     def set_advanced_search_in_items(self, key, value):
+        logger.info("Starting the method")
         self.advanced_search_in_items[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
 
     def get_advanced_summary_data_items(self, key):
-        return self.advanced_summary_data_entry_items[key]
+        logger.info("Starting the method")
+        summary_data_item = self.advanced_summary_data_entry_items[key]
+        logger.debug("The value returned is: %s", summary_data_item)
+        logger.info("ending the method")
+        return summary_data_item
 
     def set_advanced_summary_data_items(self, key, value):
+        logger.info("Starting the method")
         self.advanced_summary_data_entry_items[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
 
     def get_results_data(self, key):
-        return self.results_data[key]
+        logger.info("Starting the method")
+        result_data = self.results_data[key]
+        logger.debug("The value returned is: %s", result_data)
+        logger.info("ending the method")
+        return result_data
 
     def set_results_data(self, key, value):
+        logger.info("Starting the method")
         self.results_data[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
 
     def get_dictionary_size(self, dictionary_name):
-        return len(dictionary_name)
+        logger.info("Starting the method")
+        dictionary_size = len(dictionary_name)
+        logger.debug("The value returned is: %s", dictionary_size)
+        logger.info("ending the method")
+        return dictionary_size
 
     def main_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Main Menu:")
@@ -132,9 +196,12 @@ class CLIMenu(object):
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("ending the method")
         return criteria
 
     def basic_search_for_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Basic Search - Search For:")
@@ -142,13 +209,18 @@ class CLIMenu(object):
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def basic_search_for_criteria(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Basic Search - Introduce the search criteria:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def basic_search_in_path(self):
@@ -159,6 +231,7 @@ class CLIMenu(object):
         return criteria
 
     def basic_summary_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Basic Search - Summary:")
@@ -169,10 +242,13 @@ class CLIMenu(object):
         print("What do you want to do?")
         for key, value in self.summary_items.items():
             print(key + ". ", value)
-        choice = input(" >>  ")
-        return choice
+        criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
+        return criteria
 
     def results_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Search Results:")
@@ -191,10 +267,13 @@ class CLIMenu(object):
         print("What do you want to do?")
         for key, value in self.result_items.items():
             print(key + ". ", value)
-        choice = input(" >>  ")
-        return choice
+        criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
+        return criteria
 
     def advanced_search_for_name_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Search For Name:")
@@ -202,23 +281,32 @@ class CLIMenu(object):
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_for_name_criteria(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Introduce the 'Name' criteria:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_for_extension_criteria(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Introduce the 'Extension' criteria:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_for_size_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Search For Size:")
@@ -226,23 +314,32 @@ class CLIMenu(object):
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_for_size_criteria(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Introduce the 'Size' criteria:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_for_owner_criteria(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Introduce the 'Owner' criteria:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_for_date_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Search For Date:")
@@ -250,23 +347,32 @@ class CLIMenu(object):
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_for_date_criteria(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Introduce the 'Date' criteria:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_for_content_criteria(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Introduce the 'Content' criteria:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_in_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Search For:")
@@ -274,16 +380,22 @@ class CLIMenu(object):
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_search_in_criteria_path(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Introduce the folder path:")
         criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
         return criteria
 
     def advanced_summary_menu(self):
+        logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Summary:")
@@ -302,5 +414,7 @@ class CLIMenu(object):
         print("What do you want to do?")
         for key, value in self.summary_items.items():
             print(key + ". ", value)
-        choice = input(" >>  ")
-        return choice
+        criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
+        return criteria

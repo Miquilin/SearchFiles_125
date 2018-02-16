@@ -1,5 +1,6 @@
 from src.com.jalasoft.search_files.search.factory_asset import FactoryAsset
-from src.com.jalasoft.search_files.search.asset import File, Directory
+from src.com.jalasoft.search_files.search.file import File
+from src.com.jalasoft.search_files.search.directory import Directory
 from src.com.jalasoft.search_files.utils.logging_config import logger
 import definition
 
@@ -229,7 +230,7 @@ class Search(object):
             if isinstance(item, File):
                 item_mb = item.get_size() / (1024 * 1024)
                 if less_size != 0 and bigger_size != 0:
-                    if item_mb <= less_size and item_mb >= bigger_size:
+                    if less_size >= item_mb >= bigger_size:
                         result_asert_list.append(item)
                 elif less_size != 0 and bigger_size == 0:
                     if item_mb <= less_size :

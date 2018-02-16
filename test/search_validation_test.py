@@ -1,4 +1,5 @@
 import unittest
+import sys
 from src.com.jalasoft.search_files.utils.search_validation import SearchValidation
 
 
@@ -84,6 +85,30 @@ class SearchValidationTest(unittest.TestCase):
         num_bit = 3000000
         num_mega_bit = 2
         value_boolean = SearchValidation().is_less_than_or_equal(num_bit, num_mega_bit)
+        self.assertFalse(value_boolean)
+
+    @unittest.skipUnless(sys.platform.startswith("win"), "requires Windows")
+    def test_is_windows_method_returns_true_in_windows_os(self):
+        val = SearchValidation()
+        value_boolean = val.is_windows()
+        self.assertTrue(value_boolean)
+
+    @unittest.skipUnless(sys.platform.startswith("win"), "requires Windows")
+    def test_is_linux_method_returns_false_in_windows_os(self):
+        val = SearchValidation()
+        value_boolean = val.is_linux()
+        self.assertFalse(value_boolean)
+
+    @unittest.skipUnless(sys.platform.startswith("lin"), "requires Linux")
+    def test_is_linux_method_returns_true_in_linux_os(self):
+        val = SearchValidation()
+        value_boolean = val.is_linux()
+        self.assertTrue(value_boolean)
+
+    @unittest.skipUnless(sys.platform.startswith("lin"), "requires Linux")
+    def test_is_windows_method_returns_false_in_linux_os(self):
+        val = SearchValidation()
+        value_boolean = val.is_windows()
         self.assertFalse(value_boolean)
 
 
