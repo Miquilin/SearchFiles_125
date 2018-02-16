@@ -11,7 +11,7 @@ class Validation(object):
     def is_number(self, string_value):
         logger.info("Starting the method")
         boolean_contain = string_value.isdigit()
-        logger.info("The value returned is: %s", boolean_contain)
+        logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
 
@@ -22,7 +22,7 @@ class Validation(object):
             boolean_contain = True
         else:
             boolean_contain = False
-        logger.info("The value returned is: %s", boolean_contain)
+        logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
 
@@ -33,7 +33,7 @@ class Validation(object):
             boolean_contain = True
         else:
             boolean_contain = False
-        logger.info("The value returned is: %s", boolean_contain)
+        logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
 
@@ -41,7 +41,7 @@ class Validation(object):
         logger.info("Starting the method")
         directory = str(directory)
         boolean_contain = os.path.exists(directory)
-        logger.info("The value returned is: %s", boolean_contain)
+        logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
 
@@ -49,7 +49,7 @@ class Validation(object):
         logger.info("Starting the method")
         string_value = str(string_value)
         boolean_contain = string_value.isalnum()
-        logger.info("The value returned is: %s", boolean_contain)
+        logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
 
@@ -60,7 +60,7 @@ class Validation(object):
             boolean_contain = False
         else:
             boolean_contain = True
-        logger.info("The value returned is: %s", boolean_contain)
+        logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
 
@@ -77,13 +77,13 @@ class Validation(object):
             try:
                 datetime.datetime.strptime(str_date, date_format)
             except ValueError:
-                logger.info("The value returned is: %s", False)
+                logger.debug("The value returned is: %s", False)
                 logger.info("Ending the method")
                 return False
             boolean_contain = True
         else:
             boolean_contain = False
-        logger.info("The value returned is: %s", boolean_contain)
+        logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
 

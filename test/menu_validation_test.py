@@ -1,4 +1,5 @@
 import unittest
+import sys
 from src.com.jalasoft.search_files.utils.menu_validation import Validation
 
 
@@ -64,9 +65,17 @@ class ValidationTest(unittest.TestCase):
         value_boolean = validation.attempt_maximum(value_example)
         self.assertTrue(value_boolean)
 
-    def test_is_path_valid_method_returns_true_when_the_string_path_exists(self):
+    @unittest.skipUnless(sys.platform.startswith("win"), "requires Windows")
+    def test_is_path_valid_method_returns_true_when_the_string_path_exists_windows_os(self):
         validation = Validation()
         value_example = "C:\Program Files"
+        value_boolean = validation.is_path_valid(value_example)
+        self.assertTrue(value_boolean)
+
+    @unittest.skipUnless(sys.platform.startswith("lin"), "requires Linux")
+    def test_is_path_valid_method_returns_true_when_the_string_path_exists_linux_os(self):
+        validation = Validation()
+        value_example = "/"
         value_boolean = validation.is_path_valid(value_example)
         self.assertTrue(value_boolean)
 
