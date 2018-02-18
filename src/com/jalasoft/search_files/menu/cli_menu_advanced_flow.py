@@ -355,18 +355,16 @@ class CLIMenuAdvancedFlow(object):
         logger.debug("Starting to configure the search criteria")
         search_criteria.set_root_path(search_in_criteria)
         logger.debug("_root_path: %s", search_criteria.get_root_path())
-
         search_criteria.set_is_advance_search(True)
         logger.debug("_is_advance_search: %s", search_criteria.get_is_advance_search())
-
         search_criteria.set_common_name(search_for_name_criteria)
         logger.debug("_common_name: %s", search_criteria.get_common_name())
-
         search_criteria.set_extension(search_for_extension_criteria)
         logger.debug("_extension: %s", search_criteria.get_extension())
-
         search_criteria.set_content_word(search_for_content_criteria)
         logger.debug("_content_word: %s", search_criteria.get_content_word())
+        search_criteria.set_owner(search_for_owner_criteria)
+        logger.debug("_owner: %s", search_criteria.get_owner())
 
         if search_in == "All [including sub-folders]":
             search_criteria.set_is_include_sub_folders(True)
