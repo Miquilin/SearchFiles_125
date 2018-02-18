@@ -21,8 +21,9 @@ class SearchFile(object):
             go_to_search_for_size = True
             go_to_search_for_size_criteria = True
             go_to_search_for_owner_criteria = True
-            go_to_search_for_date = True
             go_to_search_for_date_criteria = True
+            go_to_search_for_date_operator = True
+            go_to_search_for_date_text_criteria = True
             go_to_search_for_content_criteria = True
             go_to_search_in_menu = True
             go_to_search_in_path_criteria = True
@@ -176,43 +177,56 @@ class SearchFile(object):
                     choice = advanced_menu.show_menu(8)
                 else:
                     choice = advanced_menu.show_menu(7)
-            # Advanced Search - Search For Date [menu 8]
-            while go_to_search_for_date_criteria == False:
+                # Advanced Search - Search For Date Operator menu [menu 8]
+                while go_to_search_for_date_criteria == False:
+                    if choice == "0":
+                        advanced_menu.show_menu(0)
+                    if advanced_menu.advanced_search_for_date_criteria_menu_validation(choice):
+                        advanced_menu.set_advanced_summary_data_items("search_for_date_criteria",
+                                                                      advanced_menu.get_advanced_search_for_date_criteria_menu_items(
+                                                                          choice))
+                        if choice == "3":
+                            go_to_search_for_date_criteria = True
+                            go_to_search_in_menu = False
+                            choice = advanced_menu.show_menu(11)
+                        else:
+                            go_to_search_for_date_criteria = True
+                            go_to_search_for_date_operator = False
+                            choice = advanced_menu.show_menu(9)
+                    else:
+                        choice = advanced_menu.show_menu(8)
+            # Advanced Search - Search For Date Operator menu [menu 9]
+            while go_to_search_for_date_operator == False:
                 if choice == "0":
                     advanced_menu.show_menu(0)
-                if advanced_menu.advanced_search_for_date_menu_validation(choice):
-                    advanced_menu.set_advanced_summary_data_items("search_for_date",
-                                                                  advanced_menu.get_advanced_search_for_date_menu_items(
+                if advanced_menu.advanced_search_for_date_criteria_menu_validation(choice):
+                    advanced_menu.set_advanced_summary_data_items("search_for_date_operation_criteria",
+                                                                  advanced_menu.get_advanced_search_for_date_operator_menu_items(
                                                                       choice))
-                    if choice == "3":
-                        go_to_search_for_date_criteria = True
-                        go_to_search_in_menu = False
-                        choice = advanced_menu.show_menu(10)
-                    else:
-                        go_to_search_for_date_criteria = True
-                        go_to_search_for_content_criteria = False
-                        choice = advanced_menu.show_menu(9)
-                else:
-                    choice = advanced_menu.show_menu(8)
-            # Advanced Search - Search For Date Criteria [menu 9]
-            while go_to_search_for_content_criteria == False:
-                if advanced_menu.advanced_search_for_owner_criteria_validation(choice):
-                    advanced_menu.set_advanced_summary_data_items("search_for_date_criteria", choice)
-                    go_to_search_for_content_criteria = True
-                    go_to_search_in_menu = False
+                    go_to_search_for_date_operator = True
+                    go_to_search_for_content_criteria = False
                     choice = advanced_menu.show_menu(10)
                 else:
                     choice = advanced_menu.show_menu(9)
-            # Advanced Search - Search For Content Criteria [menu 10]
+            # Advanced Search - Search For Date Criteria [menu 10]
+            while go_to_search_for_content_criteria == False:
+                if advanced_menu.advanced_search_for_owner_criteria_validation(choice):
+                    advanced_menu.set_advanced_summary_data_items("search_for_date_text_criteria", choice)
+                    go_to_search_for_content_criteria = True
+                    go_to_search_in_menu = False
+                    choice = advanced_menu.show_menu(11)
+                else:
+                    choice = advanced_menu.show_menu(10)
+            # Advanced Search - Search For Content Criteria [menu 11]
             while go_to_search_in_menu == False:
                 if advanced_menu.advanced_search_for_content_criteria_validation(choice):
                     advanced_menu.set_advanced_summary_data_items("search_for_content_criteria", choice)
                     go_to_search_in_menu = True
                     go_to_search_in_path_criteria = False
-                    choice = advanced_menu.show_menu(11)
+                    choice = advanced_menu.show_menu(12)
                 else:
-                    choice = advanced_menu.show_menu(10)
-            # Advanced Search - Search In Menu [menu 11]
+                    choice = advanced_menu.show_menu(11)
+            # Advanced Search - Search In Menu [menu 12]
             while go_to_search_in_path_criteria == False:
                 if choice == "0":
                     advanced_menu.show_menu(0)
@@ -221,19 +235,19 @@ class SearchFile(object):
                                                                   advanced_menu.get_advanced_search_in_items(choice))
                     go_to_search_in_path_criteria = True
                     go_to_summary = False
-                    choice = advanced_menu.show_menu(12)
+                    choice = advanced_menu.show_menu(13)
                 else:
-                    choice = advanced_menu.show_menu(11)
-            # Advanced Search - Search In Path  Criteria [menu 12]
+                    choice = advanced_menu.show_menu(12)
+            # Advanced Search - Search In Path  Criteria [menu 13]
             while go_to_summary == False:
                 if advanced_menu.advanced_search_in_path_criteria_validation(choice):
                     advanced_menu.set_advanced_summary_data_items("search_in_criteria", choice)
                     go_to_summary = True
                     go_to_adv_search_results = False
-                    choice = advanced_menu.show_menu(13)
+                    choice = advanced_menu.show_menu(14)
                 else:
-                    choice = advanced_menu.show_menu(12)
-            # Advanced Search - Summary Search [menu 13]
+                    choice = advanced_menu.show_menu(13)
+            # Advanced Search - Summary Search [menu 14]
             while go_to_adv_search_results == False:
                 if choice == "0":
                     advanced_menu.show_menu(0)
@@ -242,21 +256,22 @@ class SearchFile(object):
                         advanced_menu.start_search_process()
                         go_to_adv_search_results = True
                         go_to_adv_new_search = False
-                        choice = advanced_menu.show_menu(14)
+                        choice = advanced_menu.show_menu(15)
                     if choice == "2":
                         go_to_new_search = True
                         break
                 else:
                     choice = basic_menu.show_menu(5)
-            # Advanced Search Result [menu 14]
+            # Advanced Search Result [menu 15]
             while go_to_adv_new_search == False:
                 if choice == "0":
                     advanced_menu.show_menu(0)
                 if advanced_menu.advanced_summary_menu_validation(choice):
                     if choice == "1":
                         copy_to_clip.copy_to_clip(advanced_menu.get_results_dictionary())
-                        choice = advanced_menu.show_menu(14)
+                        choice = advanced_menu.show_menu(15)
                     if choice == "2":
+                        advanced_menu.clean_advanced_summary_items()
                         break
 
     if __name__ == "__main__":

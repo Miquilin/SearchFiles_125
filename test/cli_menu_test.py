@@ -108,28 +108,28 @@ class CLIMenuTest(unittest.TestCase):
 
     def test_set_a_option_value_into_advanced_search_for_date_items_dict(self):
         menu = CLIMenu()
-        menu.set_advanced_search_for_date_items("125", "A new date option")
-        option = menu.get_advanced_search_for_date_items("125")
+        menu.set_advanced_search_for_date_operator_items("125", "A new date option")
+        option = menu.get_advanced_search_for_date_operator_items("125")
         self.assertEqual(option, "A new date option")
 
     def test_get_major_than_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenu()
-        option = menu.get_advanced_search_for_date_items("1")
+        option = menu.get_advanced_search_for_date_operator_items("1")
         self.assertEqual(option, "Major than 'X' date")
 
     def test_get_minor_than_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenu()
-        option = menu.get_advanced_search_for_date_items("2")
+        option = menu.get_advanced_search_for_date_operator_items("2")
         self.assertEqual(option, "Minor than 'X' date")
 
     def test_get_none_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenu()
-        option = menu.get_advanced_search_for_date_items("3")
+        option = menu.get_advanced_search_for_date_operator_items("3")
         self.assertEqual(option, "None")
 
     def test_get_exit_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenu()
-        option = menu.get_advanced_search_for_date_items("0")
+        option = menu.get_advanced_search_for_date_operator_items("0")
         self.assertEqual(option, "Exit")
 
     def test_set_a_option_value_into_advanced_search_in_items_dict(self):

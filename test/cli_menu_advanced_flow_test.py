@@ -220,37 +220,37 @@ class CLIMenuTest(unittest.TestCase):
 
     def test_advanced_search_for_date_menu_validation_returns_true_when_option_provided_is_number(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_date_menu_validation("1")
+        result_validation = menu.advanced_search_for_date_criteria_menu_validation("1")
         self.assertEqual(result_validation, True)
 
     def test_advanced_search_for_date_menu_validation_returns_true_when_option_provided_is_into_the_range(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_date_menu_validation("2")
+        result_validation = menu.advanced_search_for_date_criteria_menu_validation("2")
         self.assertEqual(result_validation, True)
 
     def test_advanced_search_for_date_menu_validation_returns_false_when_option_provided_is_a_negative_number(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_date_menu_validation("-1")
+        result_validation = menu.advanced_search_for_date_criteria_menu_validation("-1")
         self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_date_menu_validation_returns_false_when_option_provided_is_zero(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_date_menu_validation("0")
+        result_validation = menu.advanced_search_for_date_criteria_menu_validation("0")
         self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_date_menu_validation_returns_false_when_option_provided_is_out_of_range(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_date_menu_validation("125")
+        result_validation = menu.advanced_search_for_date_criteria_menu_validation("125")
         self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_date_menu_validation_retruns_false_when_option_provided_has_a_string_character(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_date_menu_validation("MyOption")
+        result_validation = menu.advanced_search_for_date_criteria_menu_validation("MyOption")
         self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_date_menu_validation_returns_false_when_option_provided_has_non_valid_character(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_date_menu_validation("_!#$%&/()=?¡[]_:;'¿{},.-")
+        result_validation = menu.advanced_search_for_date_criteria_menu_validation("_!#$%&/()=?¡[]_:;'¿{},.-")
         self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_date_criteria_validation_returns_true_when_option_provided_is_number(self):
@@ -559,28 +559,28 @@ class CLIMenuTest(unittest.TestCase):
 
     def test_set_a_option_value_into_advanced_search_for_date_items_dict(self):
         menu = CLIMenuAdvancedFlow()
-        menu.set_advanced_search_for_date_menu_items("125", "A new date option")
-        option = menu.get_advanced_search_for_date_menu_items("125")
+        menu.set_advanced_search_for_date_operator_menu_items("125", "A new date option")
+        option = menu.get_advanced_search_for_date_operator_menu_items("125")
         self.assertEqual(option, "A new date option")
 
     def test_get_major_than_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenuAdvancedFlow()
-        option = menu.get_advanced_search_for_date_menu_items("1")
+        option = menu.get_advanced_search_for_date_operator_menu_items("1")
         self.assertEqual(option, "Major than 'X' date")
 
     def test_get_minor_than_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenuAdvancedFlow()
-        option = menu.get_advanced_search_for_date_menu_items("2")
+        option = menu.get_advanced_search_for_date_operator_menu_items("2")
         self.assertEqual(option, "Minor than 'X' date")
 
     def test_get_none_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenuAdvancedFlow()
-        option = menu.get_advanced_search_for_date_menu_items("3")
+        option = menu.get_advanced_search_for_date_operator_menu_items("3")
         self.assertEqual(option, "None")
 
     def test_get_exit_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenuAdvancedFlow()
-        option = menu.get_advanced_search_for_date_menu_items("0")
+        option = menu.get_advanced_search_for_date_operator_menu_items("0")
         self.assertEqual(option, "Exit")
 
     def test_set_a_option_value_into_advanced_search_in_items_dict(self):
