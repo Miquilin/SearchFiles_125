@@ -86,4 +86,14 @@ class Validation(object):
         logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
-    
+
+    def has_valid_characters_adv(self, string_value):
+        logger.info("Starting the method")
+        string_value = str(string_value)
+        if '|' in string_value or '<' in string_value or '>' in string_value or '"' in string_value or '?' in string_value or ':' in string_value or '/' in string_value or '\\' in string_value:
+            boolean_contain = False
+        else:
+            boolean_contain = True
+        logger.debug("The value returned is: %s", boolean_contain)
+        logger.info("Ending the method")
+        return boolean_contain

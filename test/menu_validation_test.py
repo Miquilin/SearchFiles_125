@@ -173,3 +173,59 @@ class ValidationTest(unittest.TestCase):
         validation = Validation()
         value_example = "2018-16-03 16:30:90"
         value_boolean = validation.is_valid_date(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_true_if_the_string_does_not_contain_the_no_valid_characters(self):
+        validation = Validation()
+        value_example = "Hello friends"
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertTrue(value_boolean)
+
+    def test_return_false_if_the_string_contain_pleca(self):
+        validation = Validation()
+        value_example = "Hello |friends"
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_string_contain_less_than(self):
+        validation = Validation()
+        value_example = "Hello fri<ends"
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_string_contain_greater_than(self):
+        validation = Validation()
+        value_example = "Hell>o friends"
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_string_contain_double_quotation_marks(self):
+        validation = Validation()
+        value_example = 'Hell"o friends'
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_string_contain_double_question_marks(self):
+        validation = Validation()
+        value_example = 'Hello frien?ds'
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_string_contain_colon(self):
+        validation = Validation()
+        value_example = 'Hell:o friends'
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_string_contain_back_slash(self):
+        validation = Validation()
+        value_example = 'Hello fr\iends'
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_string_contain_slash(self):
+        validation = Validation()
+        value_example = 'Hello fr/iends'
+        value_boolean = validation.has_valid_characters_adv(value_example)
+        self.assertFalse(value_boolean)
+
