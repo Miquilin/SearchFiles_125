@@ -1,8 +1,11 @@
 import os
-import win32security
 from src.com.jalasoft.search_files.search.file import File
 from src.com.jalasoft.search_files.search.directory import Directory
 from src.com.jalasoft.search_files.utils.logging_config import logger
+import sys
+sys.platform.startswith("win")
+if sys.platform.startswith("win"):
+    import win32security
 
 
 class FactoryAsset(object):
@@ -86,8 +89,12 @@ class FactoryAsset(object):
 
                                 """
         logger.info("Starting the method")
-        security_description = win32security.GetFileSecurity(path,
-                                           win32security.OWNER_SECURITY_INFORMATION)
-        sid = security_description.GetSecurityDescriptorOwner()
-        logger.info("Ending the method")
-        return win32security.LookupAccountSid(None, sid)[0]
+        if sys.platform.startswith("win"):
+            security_description = win32security.GetFileSecurity(path, win32security.OWNER_SECURITY_INFORMATION)
+            sid = security_description.GetSecurityDescriptorOwner()
+            logger.info("Ending the method")
+            return win32security.LookupAccountSid(None, sid)[0]
+        else:
+            logger.info("Search for owner is supported only on Windows OS")
+            logger.info("Ending the method")
+
