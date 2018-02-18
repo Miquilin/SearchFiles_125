@@ -6,6 +6,7 @@ import definition
 
 
 class Search(object):
+    """ Class Search """
     def __init__(self):
         pass
 
@@ -18,13 +19,13 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list.
 
                 """
-        logger.info("start_a_search : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         if search_criteria.get_is_advance_search():
             result_asert_list = self.get_advance_search(search_criteria)
         else:
             result_asert_list = self.get_basic_search(search_criteria)
-        logger.info("start_a_search : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
     def get_basic_search(self, search_criteria):
@@ -36,7 +37,7 @@ class Search(object):
                         Array [Asset]: The return directories and/or files list.
 
                         """
-        logger.info("get_basic_search : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         factory_asset = FactoryAsset()
         factory_asset.create_asset(search_criteria.get_root_path(), search_criteria.get_is_include_sub_folders())
@@ -47,7 +48,7 @@ class Search(object):
         else:
             result_asert_list = self.get_all_directories_and_files(search_criteria.get_root_path(), search_criteria.get_is_include_sub_folders())
 
-        logger.info("get_basic_search : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
     def get_advance_search(self, search_criteria):
@@ -59,7 +60,7 @@ class Search(object):
                                 Array [Asset]: The return directories and/or files list.
 
                                 """
-        logger.info("get_advance_search : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         is_there_a_result = False
         factory_asset = FactoryAsset()
@@ -85,12 +86,15 @@ class Search(object):
         if search_criteria.get_less_modification_date() is not None or search_criteria.get_bigger_modification_date() is not None:
             temporal_result = self.search_files_by_modification_date(temporal_result, search_criteria.get_less_modification_date(), search_criteria.get_bigger_modification_date(), search_criteria.get_which_search())
             is_there_a_result = True
+        if search_criteria.get_owner() != "":
+            temporal_result = self.search_files_by_owner(temporal_result, search_criteria.get_owner(), search_criteria.get_which_search())
+            is_there_a_result = True
         if search_criteria.get_content_word() != "":
             temporal_result = self.search_files_by_content_on_text_files(temporal_result, search_criteria.get_content_word())
             is_there_a_result = True
         if is_there_a_result:
             result_asert_list = temporal_result
-        logger.info("get_advance_search : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
     def get_all_directories_and_files(self, root_path, is_sub_directory_search ):
@@ -103,10 +107,10 @@ class Search(object):
         Array [Asset]: The return directories and/or files list.
 
         """
-        logger.info("get_all_directories_and_files : Enter")
+        logger.info("Starting the method")
         factory_asset = FactoryAsset()
         factory_asset.create_asset(root_path, is_sub_directory_search)
-        logger.info("get_all_directories_and_files : Exit")
+        logger.info("Ending the method")
         return factory_asset.get_list_actual_directories_and_files()
 
     def search_by_contain_common_name(self, common_name, actual_search_list, which_search=0):
@@ -123,7 +127,7 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list.
 
                 """
-        logger.info("search_by_contain_common_name : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         for item in actual_search_list:
             if which_search == 0:
@@ -141,7 +145,7 @@ class Search(object):
                 if isinstance(item, Directory):
                     if common_name in item.get_dir_name():
                         result_asert_list.append(item)
-        logger.info("search_by_contain_common_name : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
     def search_by_exact_common_name(self, common_name, actual_search_list, which_search=0):
@@ -158,7 +162,7 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list.
 
                 """
-        logger.info("search_by_exact_common_name : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         file_name, separator, extension = common_name.partition(".")
         for item in actual_search_list:
@@ -186,7 +190,7 @@ class Search(object):
                 if isinstance(item, Directory):
                     if common_name == item.get_dir_name():
                         result_asert_list.append(item)
-        logger.info("search_by_exact_common_name : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
     def search_by_exact_common_extension(self, common_extension, actual_search_list):
@@ -199,7 +203,7 @@ class Search(object):
                 Array [Asset]: The return files list that have exact common extension
 
                 """
-        logger.info("search_by_exact_common_extension : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         if "." in common_extension:
             file_name, separator, extension = common_extension.partition(".")
@@ -209,7 +213,7 @@ class Search(object):
             if isinstance(item, File):
                 if extension == item.get_extension():
                     result_asert_list.append(item)
-        logger.info("search_by_exact_common_extension : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
 
@@ -224,7 +228,7 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list that have bigger than a size
 
                 """
-        logger.info("search_files_by_size : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         for item in actual_search_list:
             if isinstance(item, File):
@@ -238,7 +242,7 @@ class Search(object):
                 elif less_size == 0 and bigger_size != 0:
                     if item_mb >= bigger_size :
                         result_asert_list.append(item)
-        logger.info("search_files_by_size : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
     def search_files_by_content_on_text_files(self, actual_search_list, word_search):
@@ -251,7 +255,7 @@ class Search(object):
                 Array [Asset]: The return files list that contains word_search
 
                 """
-        logger.info("search_files_by_content_on_text_files : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         is_word_contains_on_file = False
         for item in actual_search_list:
@@ -264,7 +268,7 @@ class Search(object):
                     if is_word_contains_on_file:
                         result_asert_list.append(item)
                         is_word_contains_on_file = False
-        logger.info("search_files_by_content : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
     def search_files_by_creation_date(self, actual_search_list, less_date, bigger_date, which_search=0):
@@ -282,7 +286,7 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list.
 
                 """
-        logger.info("search_files_by_creation_date : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         for item in actual_search_list:
             if which_search == 0:
@@ -318,7 +322,7 @@ class Search(object):
                     elif less_date is None and bigger_date is not None:
                         if item.get_st_creation_time() >= bigger_date:
                             result_asert_list.append(item)
-        logger.info("search_files_by_creation_date : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
     def search_files_by_modification_date(self, actual_search_list, less_date, bigger_date, which_search=0):
@@ -336,7 +340,7 @@ class Search(object):
                 Array [Asset]: The return directories and/or files list.
 
                 """
-        logger.info("search_files_by_modification_date : Enter")
+        logger.info("Starting the method")
         result_asert_list = []
         for item in actual_search_list:
             if which_search == 0:
@@ -372,9 +376,38 @@ class Search(object):
                     elif less_date is None and bigger_date is not None:
                         if item.get_st_modification_time() >= bigger_date:
                             result_asert_list.append(item)
-        logger.info("search_files_by_modification_date : Exit")
+        logger.info("Ending the method")
         return result_asert_list
 
-    def print_list_all(self, list_to_be_print):
-        for item in list_to_be_print:
-            print(item.get_path(), "test size", item.get_size() / (1024 * 1024))
+    def search_files_by_owner(self, actual_search_list, owner, which_search=0):
+        """
+                Args:
+                actual_search_list [Asset]: The first parameter.
+                less_date [Date]: The second parameter.
+                bigger_date [Date]: The third parameter.
+                which_search (int): It can contains three values:
+                    0: Search on Files ad directories
+                    1: Search on Directories
+                    2: Search on Files
+
+                Return:
+                Array [Asset]: The return directories and/or files list.
+
+                """
+        logger.info("Starting the method")
+        result_asert_list = []
+        for item in actual_search_list:
+            if which_search == 0:
+                if isinstance(item, File) or isinstance(item, Directory):
+                    if item.get_owner() in owner:
+                        result_asert_list.append(item)
+            elif which_search == 2:
+                if isinstance(item, File):
+                    if item.get_owner() in owner:
+                        result_asert_list.append(item)
+            elif which_search == 1:
+                if isinstance(item, Directory):
+                    if item.get_owner() in owner:
+                        result_asert_list.append(item)
+        logger.info("Ending the method")
+        return result_asert_list
