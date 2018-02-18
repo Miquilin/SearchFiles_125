@@ -1,3 +1,4 @@
+import datetime
 import os
 from src.com.jalasoft.search_files.utils.logging_config import logger
 
@@ -50,10 +51,15 @@ class CLIMenu(object):
             "3": "None",
             "0": "Exit"
         }
-        self.advanced_search_for_date_items = {
+        self.advanced_search_for_date_criteria_items = {
+            "1": "Creation date",
+            "2": "Modification date",
+            "3": "None",
+            "0": "Exit"
+        }
+        self.advanced_search_for_date_operator_items = {
             "1": "Major than 'X' date",
             "2": "Minor than 'X' date",
-            "3": "None",
             "0": "Exit"
         }
         self.advanced_summary_data_entry_items = {
@@ -63,8 +69,9 @@ class CLIMenu(object):
             "search_for_size": "",
             "search_for_size_criteria": "",
             "search_for_owner_criteria": "",
-            "search_for_date": "",
             "search_for_date_criteria": "",
+            "search_for_date_operation_criteria": "",
+            "search_for_date_text_criteria": "",
             "search_for_content_criteria": "",
             "search_in": "",
             "search_in_criteria": ""
@@ -128,16 +135,29 @@ class CLIMenu(object):
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
-    def get_advanced_search_for_date_items(self, key):
+    def get_advanced_search_for_date_operator_items(self, key):
         logger.info("Starting the method")
-        search_for_date_item = self.advanced_search_for_date_items[key]
+        search_for_date_item = self.advanced_search_for_date_operator_items[key]
         logger.debug("The value returned is: %s", search_for_date_item)
         logger.info("ending the method")
         return search_for_date_item
 
-    def set_advanced_search_for_date_items(self, key, value):
+    def set_advanced_search_for_date_operator_items(self, key, value):
         logger.info("Starting the method")
-        self.advanced_search_for_date_items[key] = value
+        self.advanced_search_for_date_operator_items[key] = value
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("ending the method")
+
+    def get_advanced_search_for_date_criteria_items(self, key):
+        logger.info("Starting the method")
+        search_for_date_item = self.advanced_search_for_date_criteria_items[key]
+        logger.debug("The value returned is: %s", search_for_date_item)
+        logger.info("ending the method")
+        return search_for_date_item
+
+    def set_advanced_search_for_date_criteria_items(self, key, value):
+        logger.info("Starting the method")
+        self.advanced_search_for_date_criteria_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
@@ -338,12 +358,25 @@ class CLIMenu(object):
         logger.info("Ending the method")
         return criteria
 
-    def advanced_search_for_date_menu(self):
+    def advanced_search_for_date_operator_menu(self):
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Advanced Search - Search For Date:")
-        for key, value in self.advanced_search_for_date_items.items():
+        for key, value in self.advanced_search_for_date_operator_items.items():
+            print(key + ". ", value)
+        print("Select and option:")
+        criteria = input(" >>  ")
+        logger.debug("The option selected is: %s", criteria)
+        logger.info("Ending the method")
+        return criteria
+
+    def advanced_search_for_date_criteria_menu(self):
+        logger.info("Starting the method")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(self.MENU_TITLE)
+        print("Advanced Search - Search For Date:")
+        for key, value in self.advanced_search_for_date_criteria_items.items():
             print(key + ". ", value)
         print("Select and option:")
         criteria = input(" >>  ")
@@ -355,11 +388,15 @@ class CLIMenu(object):
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
-        print("Advanced Search - Introduce the 'Date' criteria:")
+        print("Advanced Search - Introduce the 'Date' criteria in YYYY-MM-DD hh:mm:ss format:")
         criteria = input(" >>  ")
         logger.debug("The option selected is: %s", criteria)
+        date_criteria, time_criteria = map(str, criteria.split(' '))
+        year, month, day = map(int, date_criteria.split('-'))
+        hour, minutes, seconds = map(int, time_criteria.split(':'))
+        datetime_criteria = datetime.datetime(year, month, day, hour, minutes, seconds)
         logger.info("Ending the method")
-        return criteria
+        return datetime_criteria
 
     def advanced_search_for_content_criteria(self):
         logger.info("Starting the method")
@@ -405,8 +442,9 @@ class CLIMenu(object):
         print(" - Search For Size: ", self.advanced_summary_data_entry_items["search_for_size"])
         print(" - Search For Size Criteria: ", self.advanced_summary_data_entry_items["search_for_size_criteria"])
         print(" - Search For Owner Criteria: ", self.advanced_summary_data_entry_items["search_for_owner_criteria"])
-        print(" - Search For Date: ", self.advanced_summary_data_entry_items["search_for_date"])
         print(" - Search For Date Criteria: ", self.advanced_summary_data_entry_items["search_for_date_criteria"])
+        print(" - Search For Date Operator: ", self.advanced_summary_data_entry_items["search_for_date_operation_criteria"])
+        print(" - Search For Date Value Criteria: ", self.advanced_summary_data_entry_items["search_for_date_text_criteria"])
         print(" - Search For Content Criteria: ", self.advanced_summary_data_entry_items["search_for_content_criteria"])
         print(" - Search In: ", self.advanced_summary_data_entry_items["search_in"])
         print(" - Search In Criteria: ", self.advanced_summary_data_entry_items["search_in_criteria"])
@@ -418,3 +456,17 @@ class CLIMenu(object):
         logger.debug("The option selected is: %s", criteria)
         logger.info("Ending the method")
         return criteria
+
+    def clean_summary_data_entry_items_dict(self):
+        self.advanced_summary_data_entry_items["search_for_name"] = ""
+        self.advanced_summary_data_entry_items["search_for_name_criteria"] = ""
+        self.advanced_summary_data_entry_items["search_for_extension_criteria"] = ""
+        self.advanced_summary_data_entry_items["search_for_size"] = ""
+        self.advanced_summary_data_entry_items["search_for_size_criteria"] = ""
+        self.advanced_summary_data_entry_items["search_for_owner_criteria"] = ""
+        self.advanced_summary_data_entry_items["search_for_date_criteria"] = ""
+        self.advanced_summary_data_entry_items["search_for_date_operation_criteria"] = ""
+        self.advanced_summary_data_entry_items["search_for_date_text_criteria"] = ""
+        self.advanced_summary_data_entry_items["search_for_content_criteria"] = ""
+        self.advanced_summary_data_entry_items["search_in"] = ""
+        self.advanced_summary_data_entry_items["search_in_criteria"] = ""

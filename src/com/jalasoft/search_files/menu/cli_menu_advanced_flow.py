@@ -45,24 +45,27 @@ class CLIMenuAdvancedFlow(object):
             logger.debug("Option selected: %s. Loading the 'Advanced - Search For Owner Criteria'.", option)
             value = self.cli_menu.advanced_search_for_owner_criteria()
         elif option == 8:
-            logger.debug("Option selected: %s. Loading the 'Advanced - Search For Date' menu.", option)
-            value = self.cli_menu.advanced_search_for_date_menu()
+            logger.debug("Option selected: %s. Loading the 'Advanced - Search For Date' criteria menu.", option)
+            value = self.cli_menu.advanced_search_for_date_criteria_menu()
         elif option == 9:
-            logger.debug("Option selected: %s. Loading the 'Advanced - Search For Date Criteria'.", option)
-            value = self.cli_menu.advanced_search_for_date_criteria()
+            logger.debug("Option selected: %s. Loading the 'Advanced - Search For Date' operator menu.", option)
+            value = self.cli_menu.advanced_search_for_date_operator_menu()
         elif option == 10:
+            logger.debug("Option selected: %s. Loading the 'Advanced - Search For Date text criteria'.", option)
+            value = self.cli_menu.advanced_search_for_date_criteria()
+        elif option == 11:
             logger.debug("Option selected: %s. Loading the 'Advanced - Search For Content Criteria'.", option)
             value = self.cli_menu.advanced_search_for_content_criteria()
-        elif option == 11:
+        elif option == 12:
             logger.debug("Option selected: %s. Loading the 'Advanced - Search In' menu.", option)
             value = self.cli_menu.advanced_search_in_menu()
-        elif option == 12:
+        elif option == 13:
             logger.debug("Option selected: %s. Loading the 'Advanced - Search In Criteria'.", option)
             value = self.cli_menu.advanced_search_in_criteria_path()
-        elif option == 13:
+        elif option == 14:
             logger.debug("Option selected: %s. Loading the 'Advanced - Summary' menu.", option)
             value = self.cli_menu.advanced_summary_menu()
-        elif option == 14:
+        elif option == 15:
             logger.debug("Option selected: %s. Loading the 'Results' menu.", option)
             value = self.cli_menu.results_menu()
         logger.info("Ending the method")
@@ -159,10 +162,22 @@ class CLIMenuAdvancedFlow(object):
         #     logger.info("Ending the method")
         #     return False
 
-    def advanced_search_for_date_menu_validation(self, option):
+    def advanced_search_for_date_criteria_menu_validation(self, option):
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
-                self.cli_menu.advanced_search_for_date_items) - 1, 1):
+                self.cli_menu.advanced_search_for_date_criteria_items) - 1, 1):
+            logger.debug("The value returned is: %s", True)
+            logger.info("Ending the method")
+            return True
+        else:
+            logger.debug("The value returned is: %s", False)
+            logger.info("Ending the method")
+            return False
+
+    def advanced_search_for_date_operator_menu_validation(self, option):
+        logger.info("Starting the method")
+        if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
+                self.cli_menu.advanced_search_for_date_operator_items) - 1, 1):
             logger.debug("The value returned is: %s", True)
             logger.info("Ending the method")
             return True
@@ -280,16 +295,29 @@ class CLIMenuAdvancedFlow(object):
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("Ending the method")
 
-    def get_advanced_search_for_date_menu_items(self, key):
+    def get_advanced_search_for_date_operator_menu_items(self, key):
         logger.info("Starting the method")
-        search_for_date_item = self.cli_menu.get_advanced_search_for_date_items(key)
+        search_for_date_item = self.cli_menu.get_advanced_search_for_date_operator_items(key)
         logger.debug("The value returned is: %s", search_for_date_item)
         logger.info("Ending the method")
         return search_for_date_item
 
-    def set_advanced_search_for_date_menu_items(self, key, value):
+    def set_advanced_search_for_date_operator_menu_items(self, key, value):
         logger.info("Starting the method")
-        self.cli_menu.set_advanced_search_for_date_items(key, value)
+        self.cli_menu.set_advanced_search_for_date_operator_items(key, value)
+        logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
+        logger.info("Ending the method")
+
+    def get_advanced_search_for_date_criteria_menu_items(self, key):
+        logger.info("Starting the method")
+        search_for_date_item = self.cli_menu.get_advanced_search_for_date_criteria_items(key)
+        logger.debug("The value returned is: %s", search_for_date_item)
+        logger.info("Ending the method")
+        return search_for_date_item
+
+    def set_advanced_search_for_date_criteria_menu_items(self, key, value):
+        logger.info("Starting the method")
+        self.cli_menu.set_advanced_search_for_date_criteria_items(key, value)
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("Ending the method")
 
@@ -316,8 +344,9 @@ class CLIMenuAdvancedFlow(object):
         search_for_size = self.cli_menu.get_advanced_summary_data_items("search_for_size")
         search_for_size_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_size_criteria")
         search_for_owner_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_owner_criteria")
-        search_for_date = self.cli_menu.get_advanced_summary_data_items("search_for_date")
         search_for_date_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_date_criteria")
+        search_for_date_operator = self.cli_menu.get_advanced_summary_data_items("search_for_date_operation_criteria")
+        search_for_date_text_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_date_text_criteria")
         search_for_content_criteria = self.cli_menu.get_advanced_summary_data_items("search_for_content_criteria")
         search_in = self.cli_menu.get_advanced_summary_data_items("search_in")
         search_in_criteria = self.cli_menu.get_advanced_summary_data_items("search_in_criteria")
@@ -325,22 +354,53 @@ class CLIMenuAdvancedFlow(object):
         search_criteria = SearchCriteria()
         logger.debug("Starting to configure the search criteria")
         search_criteria.set_root_path(search_in_criteria)
+        logger.debug("_root_path: %s", search_criteria.get_root_path())
+
         search_criteria.set_is_advance_search(True)
+        logger.debug("_is_advance_search: %s", search_criteria.get_is_advance_search())
+
         search_criteria.set_common_name(search_for_name_criteria)
+        logger.debug("_common_name: %s", search_criteria.get_common_name())
+
         search_criteria.set_extension(search_for_extension_criteria)
+        logger.debug("_extension: %s", search_criteria.get_extension())
+
         search_criteria.set_content_word(search_for_content_criteria)
+        logger.debug("_content_word: %s", search_criteria.get_content_word())
+
         if search_in == "All [including sub-folders]":
             search_criteria.set_is_include_sub_folders(True)
-        elif search_in == "Current Folder":
+            logger.debug("_is_include_sub_folders: %s", search_criteria.get_is_include_sub_folders())
+        if search_in == "Current Folder":
             search_criteria.set_is_include_sub_folders(False)
-        elif search_for_name == "Name - Contains text":
+            logger.debug("_is_include_sub_folders: %s", search_criteria.get_is_include_sub_folders())
+        if search_for_name == "Name - Contains text":
             search_criteria.set_is_exact_common_name(False)
-        elif search_for_name == "Name - Exact Text":
+            logger.debug("_is_exact_common_name: %s", search_criteria.get_is_exact_common_name())
+        if search_for_name == "Name - Exact Text":
             search_criteria.set_is_exact_common_name(True)
-        elif search_for_size == "Major than 'X' MB.":
+            logger.debug("_is_exact_common_name: %s", search_criteria.get_is_exact_common_name())
+        if search_for_size == "Major than 'X' MB.":
             search_criteria.set_bigger_size(int(search_for_size_criteria))
-        elif search_for_size == "Minor than 'X' MB.":
+            logger.debug("_bigger_size: %s", search_criteria.get_bigger_size())
+        if search_for_size == "Minor than 'X' MB.":
             search_criteria.set_less_size(int(search_for_size_criteria))
+            logger.debug("_less_size: %s", search_criteria.get_less_size())
+        if search_for_date_criteria == "Creation date":
+            if search_for_date_operator == "Major than 'X' date":
+                search_criteria.set_bigger_creation_date(search_for_date_text_criteria)
+                logger.debug("bigger_creation_date: %s", search_criteria.get_bigger_creation_date())
+            if search_for_date_operator == "Minor than 'X' date":
+                search_criteria.set_less_creation_date(search_for_date_text_criteria)
+                logger.debug("less_creation_date: %s", search_criteria.get_less_creation_date())
+        if search_for_date_criteria == "Modification date":
+            if search_for_date_operator == "Major than 'X' date":
+                search_criteria.set_bigger_modification_date(search_for_date_text_criteria)
+                logger.debug("bigger_modification_date: %s", search_criteria.get_bigger_modification_date())
+            if search_for_date_operator == "Minor than 'X' date":
+                search_criteria.set_less_modification_date(search_for_date_text_criteria)
+                logger.debug("less_modification_date: %s", search_criteria.get_less_modification_date())
+        logger.debug("Search criteria configuration has been completed")
         search = Search()
         logger.debug("Starting the Search")
         search_result = search.start_a_search(search_criteria)
@@ -362,3 +422,6 @@ class CLIMenuAdvancedFlow(object):
         self.cli_menu.set_results_data("files", self.files)
         self.cli_menu.set_results_data("folders", self.folders)
         logger.info("Ending the method")
+
+    def clean_advanced_summary_items(self):
+        self.cli_menu.clean_summary_data_entry_items_dict()
