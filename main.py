@@ -1,6 +1,7 @@
 from src.com.jalasoft.search_files.menu.cli_menu_basic_flow import CLIMenuBasicFlow
 from src.com.jalasoft.search_files.menu.cli_menu_advanced_flow import CLIMenuAdvancedFlow
 from src.com.jalasoft.search_files.utils.copy_2_clipboard import Copy2ClipBoard
+import sys
 
 
 class SearchFile(object):
@@ -149,10 +150,14 @@ class SearchFile(object):
                     advanced_menu.set_advanced_summary_data_items("search_for_size",
                                                                   advanced_menu.get_advanced_search_for_size_menu_items(
                                                                       choice))
-                    if choice == "3":
+                    if choice == "3" and sys.platform.startswith("win"):
                         go_to_search_for_size_criteria = True
-                        go_to_search_for_date = False
+                        go_to_search_for_date_criteria = False
                         choice = advanced_menu.show_menu(7)
+                    if choice == "3" and sys.platform.startswith("lin"):
+                        go_to_search_for_size_criteria = True
+                        go_to_search_for_date_operator = False
+                        choice = advanced_menu.show_menu(8)
                     else:
                         go_to_search_for_size_criteria = True
                         go_to_search_for_owner_criteria = False
@@ -163,22 +168,27 @@ class SearchFile(object):
             while go_to_search_for_owner_criteria == False:
                 if advanced_menu.advanced_search_for_size_criteria_validation(choice):
                     advanced_menu.set_advanced_summary_data_items("search_for_size_criteria", choice)
-                    go_to_search_for_owner_criteria = True
-                    go_to_search_for_date = False
-                    choice = advanced_menu.show_menu(7)
+                    if sys.platform.startswith("lin"):
+                        go_to_search_for_owner_criteria = True
+                        go_to_search_for_date_operator = False
+                        choice = advanced_menu.show_menu(8)
+                    if sys.platform.startswith("win"):
+                        go_to_search_for_owner_criteria = True
+                        go_to_search_for_date_criteria = False
+                        choice = advanced_menu.show_menu(7)
                 else:
                     choice = advanced_menu.show_menu(6)
             # Advanced Search - Search For Owner Criteria [menu 7]
-            while go_to_search_for_date == False:
+            while go_to_search_for_date_criteria == False:
                 if advanced_menu.advanced_search_for_owner_criteria_validation(choice):
                     advanced_menu.set_advanced_summary_data_items("search_for_owner_criteria", choice)
-                    go_to_search_for_date = True
-                    go_to_search_for_date_criteria = False
+                    go_to_search_for_date_criteria = True
+                    go_to_search_for_date_operator = False
                     choice = advanced_menu.show_menu(8)
                 else:
                     choice = advanced_menu.show_menu(7)
-                # Advanced Search - Search For Date Operator menu [menu 8]
-                while go_to_search_for_date_criteria == False:
+            # Advanced Search - Search For Date Criteria menu [menu 8]
+            while go_to_search_for_date_operator == False:
                     if choice == "0":
                         advanced_menu.show_menu(0)
                     if advanced_menu.advanced_search_for_date_criteria_menu_validation(choice):
@@ -186,31 +196,31 @@ class SearchFile(object):
                                                                       advanced_menu.get_advanced_search_for_date_criteria_menu_items(
                                                                           choice))
                         if choice == "3":
-                            go_to_search_for_date_criteria = True
+                            go_to_search_for_date_operator = True
                             go_to_search_in_menu = False
                             choice = advanced_menu.show_menu(11)
                         else:
-                            go_to_search_for_date_criteria = True
-                            go_to_search_for_date_operator = False
+                            go_to_search_for_date_operator = True
+                            go_to_search_for_date_text_criteria = False
                             choice = advanced_menu.show_menu(9)
                     else:
                         choice = advanced_menu.show_menu(8)
             # Advanced Search - Search For Date Operator menu [menu 9]
-            while go_to_search_for_date_operator == False:
+            while go_to_search_for_date_text_criteria == False:
                 if choice == "0":
                     advanced_menu.show_menu(0)
-                if advanced_menu.advanced_search_for_date_criteria_menu_validation(choice):
+                if advanced_menu.advanced_search_for_date_operator_menu_validation(choice):
                     advanced_menu.set_advanced_summary_data_items("search_for_date_operation_criteria",
                                                                   advanced_menu.get_advanced_search_for_date_operator_menu_items(
                                                                       choice))
-                    go_to_search_for_date_operator = True
+                    go_to_search_for_date_text_criteria = True
                     go_to_search_for_content_criteria = False
                     choice = advanced_menu.show_menu(10)
                 else:
                     choice = advanced_menu.show_menu(9)
-            # Advanced Search - Search For Date Criteria [menu 10]
+            # Advanced Search - Search For Date Text Criteria [menu 10]
             while go_to_search_for_content_criteria == False:
-                if advanced_menu.advanced_search_for_owner_criteria_validation(choice):
+                if advanced_menu.advanced_search_for_content_criteria_validation(choice):
                     advanced_menu.set_advanced_summary_data_items("search_for_date_text_criteria", choice)
                     go_to_search_for_content_criteria = True
                     go_to_search_in_menu = False
