@@ -66,14 +66,14 @@ class Validation(object):
 
     def is_valid_date(self, str_date):
         logger.info("Starting the method")
-        regex = re.compile("(\d{1,4})/(\d{1,2})/(\d{1,2})")
+        regex = re.compile("(\d{1,4})-(\d{1,2})-(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})")
         match = regex.match(str_date)
         if match:
-            year, month, day = match.groups()
+            year, month, day, hour, minute, seconds = match.groups()
             if len(year) == 4:
-                date_format = "%Y/%m/%d"
+                date_format = "%Y-%m-%d %H:%S:%M"
             else:
-                date_format = "%y/%m/%d"
+                date_format = "%y-%m-%d %H:%S:%M"
             try:
                 datetime.datetime.strptime(str_date, date_format)
             except ValueError:
@@ -86,7 +86,4 @@ class Validation(object):
         logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
-
-
-
-
+    
