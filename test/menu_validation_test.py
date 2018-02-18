@@ -111,7 +111,7 @@ class ValidationTest(unittest.TestCase):
 
     def test_has_valid_characters_method_returns_false_when_value_contain_special_characters(self):
         validation = Validation()
-        value_example = "aAbAcC123+!@#"
+        value_example = "_!#$%&/()=?¡[]_:;'¿{},.-"
         value_boolean = validation.has_valid_characters(value_example)
         self.assertFalse(value_boolean)
 
@@ -127,32 +127,49 @@ class ValidationTest(unittest.TestCase):
         value_boolean = validation.is_blank(value_example)
         self.assertFalse(value_boolean)
 
-    def test_return_true_if_the_date_string_contain_the_date_format_year_month_day_when_year_is_in_short_format(self):
+    def test_return_true_if_the_date_string_contain_the_date_format_year_month_day_h_m_s_when_year_is_in_short_format(self):
         validation = Validation()
-        value_example = "2018/01/25"
+        value_example = "2018-01-25 16:30:24"
         value_boolean = validation.is_valid_date(value_example)
         self.assertTrue(value_boolean)
 
-    def test_return_true_if_the_date_string_contain_the_date_format_year_month_day_when_year_is_in_long_format(self):
+    def test_return_true_if_the_date_string_contain_the_date_format_year_month_day_h_m_s_when_year_is_in_long_format(self):
         validation = Validation()
-        value_example = "18/01/25"
+        value_example = "18-01-25 16:30:24"
         value_boolean = validation.is_valid_date(value_example)
         self.assertTrue(value_boolean)
 
-    def test_return_false_if_the_date_string_does_not_contain_the_date_format_year_month_day(self):
+    def test_return_false_if_the_date_string_does_not_contain_the_date_format_year_month_day_h_m_s(self):
         validation = Validation()
         value_example = "123sadasd123asdas"
         value_boolean = validation.is_valid_date(value_example)
         self.assertFalse(value_boolean)
 
-    def test_return_false_if_the_date_string_contain_the_date_format_year_month_day_but_the_day_is_no_valid(self):
+    def test_return_false_if_the_date_string_contain_the_date_format_year_month_day_h_m_s_but_the_day_is_no_valid(self):
         validation = Validation()
-        value_example = "2018/01/60"
+        value_example = "2018-01-60 16:30:24"
         value_boolean = validation.is_valid_date(value_example)
         self.assertFalse(value_boolean)
 
-    def test_return_false_if_the_date_string_contain_the_date_format_year_month_day_but_the_month_is_no_valid(self):
+    def test_return_false_if_the_date_string_contain_the_date_format_year_month_day_h_m_s_but_the_month_is_no_valid(self):
         validation = Validation()
-        value_example = "2018/16/03"
+        value_example = "2018-16-03 16:30:24"
         value_boolean = validation.is_valid_date(value_example)
         self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_date_string_contain_the_date_format_year_month_day_h_m_s_but_the_hour_is_no_valid(self):
+        validation = Validation()
+        value_example = "2018-16-03 25:30:24"
+        value_boolean = validation.is_valid_date(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_date_string_contain_the_date_format_year_month_day_h_m_s_but_the_min_is_no_valid(self):
+        validation = Validation()
+        value_example = "2018-16-03 16:70:24"
+        value_boolean = validation.is_valid_date(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_return_false_if_the_date_string_contain_the_date_format_year_month_day_h_m_s_but_the_second_is_no_valid(self):
+        validation = Validation()
+        value_example = "2018-16-03 16:30:90"
+        value_boolean = validation.is_valid_date(value_example)
