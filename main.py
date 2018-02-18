@@ -154,10 +154,12 @@ class SearchFile(object):
                         go_to_search_for_size_criteria = True
                         go_to_search_for_date_criteria = False
                         choice = advanced_menu.show_menu(7)
+                        continue
                     if choice == "3" and sys.platform.startswith("lin"):
                         go_to_search_for_size_criteria = True
                         go_to_search_for_date_operator = False
                         choice = advanced_menu.show_menu(8)
+                        continue
                     else:
                         go_to_search_for_size_criteria = True
                         go_to_search_for_owner_criteria = False
