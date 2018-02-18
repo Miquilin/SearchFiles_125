@@ -3,7 +3,8 @@ import os
 import datetime
 from src.com.jalasoft.search_files.search.search import Search
 from src.com.jalasoft.search_files.search.search_criteria import SearchCriteria
-from src.com.jalasoft.search_files.search.asset import File, Directory
+from src.com.jalasoft.search_files.search.file import File
+from src.com.jalasoft.search_files.search.directory import Directory
 
 
 PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
@@ -155,6 +156,3 @@ class SearchByDateTest(unittest.TestCase):
         files.sort(key=str)
         files_result.sort(key=str)
         self.assertEqual(files, files_result)
-
-if __name__ == "__main__":
-    unittest.main()

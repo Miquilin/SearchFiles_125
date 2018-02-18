@@ -173,4 +173,3 @@ class ValidationTest(unittest.TestCase):
         validation = Validation()
         value_example = "2018-16-03 16:30:90"
         value_boolean = validation.is_valid_date(value_example)
-        self.assertFalse(value_boolean)
