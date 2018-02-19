@@ -53,73 +53,43 @@ class CLIMenuBasicFlow(object):
 
     def main_menu_validation(self, option):
         logger.info("Starting the method")
-        if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
-                self.cli_menu.basic_search_for_menu_items) - 1, 1) and self.validator.has_valid_characters(option):
-            logger.debug("The value returned is: %s", True)
-            logger.info("Ending the method")
-            return True
-        else:
-            logger.debug("The value returned is: %s", False)
-            logger.info("Ending the method")
-            return False
+        boolean_contain = self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
+                self.cli_menu.basic_search_for_menu_items) - 1, 1) and self.validator.has_valid_characters(option)
+        logger.info("Ending the method")
+        return boolean_contain
 
     def basic_search_for_option_validation(self, option):
         logger.info("Starting the method")
-        if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
-                self.cli_menu.basic_search_for_menu_items) - 1, 1) and self.validator.has_valid_characters(option):
-            logger.debug("The value returned is: %s", True)
-            logger.info("Ending the method")
-            return True
-        else:
-            logger.debug("The value returned is: %s", False)
-            logger.info("Ending the method")
-            return False
+        boolean_contain = self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
+                self.cli_menu.basic_search_for_menu_items) - 1, 1) and self.validator.has_valid_characters(option)
+        logger.info("Ending the method")
+        return boolean_contain
 
     def basic_search_for_criteria_validation(self, option):
         logger.info("Starting the method")
-        if self.validator.has_valid_characters(option):
-            logger.debug("The value returned is: %s", True)
-            logger.info("Ending the method")
-            return True
-        else:
-            logger.debug("The value returned is: %s", False)
-            logger.info("Ending the method")
-            return False
+        boolean_contain = self.validator.has_valid_characters(option)
+        logger.info("Ending the method")
+        return boolean_contain
 
     def basic_search_in_path_validation(self, option):
         logger.info("Starting the method")
-        if self.validator.is_path_valid(option):
-            logger.debug("The value returned is: %s", True)
-            logger.info("Ending the method")
-            return True
-        else:
-            logger.debug("The value returned is: %s", False)
-            logger.info("Ending the method")
-            return False
+        boolean_contain = self.validator.is_path_valid(option)
+        logger.info("Ending the method")
+        return boolean_contain
 
     def basic_summary_option_validation(self, option):
         logger.info("Starting the method")
-        if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
-                self.cli_menu.summary_items) - 1, 1) and self.validator.has_valid_characters(option):
-            logger.debug("The value returned is: %s", True)
-            logger.info("Ending the method")
-            return True
-        else:
-            logger.debug("The value returned is: %s", False)
-            logger.info("Ending the method")
-            return False
+        boolean_contain = self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
+                self.cli_menu.summary_items) - 1, 1) and self.validator.has_valid_characters(option)
+        logger.info("Ending the method")
+        return boolean_contain
 
     def basic_result_option_validation(self, option):
         logger.info("Starting the method")
-        if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
-                self.cli_menu.result_items) - 1, 1) and self.validator.has_valid_characters(option):
-            logger.debug("The value returned is: %s", True)
-            logger.info("Ending the method")
-            return True
-        else:
-            logger.debug("The value returned is: %s", False)
-            logger.info("Ending the method")
-            return False
+        boolean_contain = self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
+                self.cli_menu.result_items) - 1, 1) and self.validator.has_valid_characters(option)
+        logger.info("Ending the method")
+        return boolean_contain
 
     def get_summary_data_items(self, key):
         logger.info("Starting the method")
