@@ -11,18 +11,16 @@ class Asset(object):
         self._is_file = is_file
         self._size = os.path.getsize(path)
         attributes = os.stat(path)
-        self._st_access_time = datetime.datetime.fromtimestamp(attributes[7])
-        self._st_modification_time = datetime.datetime.fromtimestamp(attributes[8])
-        self._st_creation_time = datetime.datetime.fromtimestamp(attributes[9])
+        self._st_modification_time = datetime.datetime.now()
+        if attributes[8] != 0:
+            self._st_modification_time = datetime.datetime.fromtimestamp(attributes[8])
+        self._st_modification_time = datetime.datetime.now()
+        if attributes[9] != 0:
+            self._st_creation_time = datetime.datetime.fromtimestamp(attributes[9])
         # supported only on unix
         self._st_uid_user_id = attributes[4]
         self._st_gid_group_id = attributes[5]
         self._owner = ""
-
-    def get_st_access_time(self):
-        logger.info("Starting the method")
-        logger.info("Ending the method")
-        return self._st_access_time
 
     def get_st_modification_time(self):
         logger.info("Starting the method")
