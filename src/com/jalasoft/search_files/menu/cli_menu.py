@@ -4,9 +4,17 @@ from src.com.jalasoft.search_files.utils.logging_config import logger
 
 
 class CLIMenu(object):
+    """
+    CLIMenu class contains each menu displayed in the basic and advanced search flow
+    """
     MENU_TITLE = "WELCOME TO SEARCH FILE TOOL"
 
     def __init__(self):
+        """
+        This method is the constructor of the class
+        :param None
+        :return None
+        """
         logger.info("Starting the method")
         self.main_menu_items = {
             "1": "Basic Search",
@@ -84,6 +92,11 @@ class CLIMenu(object):
         logger.info("Ending the method")
 
     def get_basic_search_for_menu_items(self, key):
+        """
+        This method permits to get a value from basic_search_for_menu_items dictionary
+        :param key:
+        :return: search_for_menu_item
+        """
         logger.info("Starting the method")
         search_for_menu_item = self.basic_search_for_menu_items[key]
         logger.debug("The value returned is: %s", search_for_menu_item)
@@ -91,12 +104,23 @@ class CLIMenu(object):
         return search_for_menu_item
 
     def set_basic_search_for_menu_items(self, key, value):
+        """
+        This method permits to set/update a value in basic_search_for_menu_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.basic_search_for_menu_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_basic_summary_data_items(self, key):
+        """
+        This method permits to get a value from basic_summary_data_entry_items dictionary
+        :param key:
+        :return: summary_data_item
+        """
         logger.info("Starting the method")
         summary_data_item = self.basic_summary_data_entry_items[key]
         logger.debug("The value returned is: %s", summary_data_item)
@@ -104,12 +128,23 @@ class CLIMenu(object):
         return summary_data_item
 
     def set_basic_summary_data_items(self, key, value):
+        """
+        This method permits to set/update a value in basic_summary_data_entry_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.basic_summary_data_entry_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_advanced_search_for_name_items(self, key):
+        """
+        This method permits to get a value from advanced_search_for_name_items dictionary
+        :param key:
+        :return: search_for_name_item
+        """
         logger.info("Starting the method")
         search_for_name_item = self.advanced_search_for_name_items[key]
         logger.debug("The value returned is: %s", search_for_name_item)
@@ -117,12 +152,23 @@ class CLIMenu(object):
         return search_for_name_item
 
     def set_advanced_search_for_name_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_for_name_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.advanced_search_for_name_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_advanced_search_for_size_items(self, key):
+        """
+        This method permits to get a value from advanced_search_for_name_items dictionary
+        :param key:
+        :return: search_for_size_items
+        """
         logger.info("Starting the method")
         search_for_size_items = self.advanced_search_for_size_items[key]
         logger.debug("The value returned is: %s", search_for_size_items)
@@ -130,12 +176,23 @@ class CLIMenu(object):
         return search_for_size_items
 
     def set_advanced_search_for_size_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_for_size_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.advanced_search_for_size_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_advanced_search_for_date_operator_items(self, key):
+        """
+        This method permits to get a value from advanced_search_for_date_operator_items dictionary
+        :param key:
+        :return: search_for_date_item
+        """
         logger.info("Starting the method")
         search_for_date_item = self.advanced_search_for_date_operator_items[key]
         logger.debug("The value returned is: %s", search_for_date_item)
@@ -143,12 +200,23 @@ class CLIMenu(object):
         return search_for_date_item
 
     def set_advanced_search_for_date_operator_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_for_date_operator_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.advanced_search_for_date_operator_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_advanced_search_for_date_criteria_items(self, key):
+        """
+        This method permits to get a value from advanced_search_for_date_criteria_items dictionary
+        :param key:
+        :return: search_for_date_item
+        """
         logger.info("Starting the method")
         search_for_date_item = self.advanced_search_for_date_criteria_items[key]
         logger.debug("The value returned is: %s", search_for_date_item)
@@ -156,12 +224,23 @@ class CLIMenu(object):
         return search_for_date_item
 
     def set_advanced_search_for_date_criteria_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_for_date_criteria_items dictionary
+        :param key:
+        :param value:
+        :return:
+        """
         logger.info("Starting the method")
         self.advanced_search_for_date_criteria_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_advanced_search_in_items(self, key):
+        """
+        This method permits to get a value from advanced_search_in_items dictionary
+        :param key:
+        :return: search_in_item
+        """
         logger.info("Starting the method")
         search_in_item = self.advanced_search_in_items[key]
         logger.debug("The value returned is: %s", search_in_item)
@@ -169,12 +248,23 @@ class CLIMenu(object):
         return search_in_item
 
     def set_advanced_search_in_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_in_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.advanced_search_in_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_advanced_summary_data_items(self, key):
+        """
+        This method permits to get a value from advanced_summary_data_entry_items dictionary
+        :param key:
+        :return: summary_data_item
+        """
         logger.info("Starting the method")
         summary_data_item = self.advanced_summary_data_entry_items[key]
         logger.debug("The value returned is: %s", summary_data_item)
@@ -182,12 +272,23 @@ class CLIMenu(object):
         return summary_data_item
 
     def set_advanced_summary_data_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_summary_data_entry_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.advanced_summary_data_entry_items[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_results_data(self, key):
+        """
+        This method permits to get a value from results_data dictionary
+        :param key:
+        :return: result_data
+        """
         logger.info("Starting the method")
         result_data = self.results_data[key]
         logger.debug("The value returned is: %s", result_data)
@@ -195,12 +296,23 @@ class CLIMenu(object):
         return result_data
 
     def set_results_data(self, key, value):
+        """
+        This method permits to set/update a value in results_data dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.results_data[key] = value
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("ending the method")
 
     def get_dictionary_size(self, dictionary_name):
+        """
+        This method permits to get the size of a dictionary
+        :param dictionary_name:
+        :return: dictionary_size
+        """
         logger.info("Starting the method")
         dictionary_size = len(dictionary_name)
         logger.debug("The value returned is: %s", dictionary_size)
@@ -208,6 +320,10 @@ class CLIMenu(object):
         return dictionary_size
 
     def main_menu(self):
+        """
+        This method loads the options that belong to main menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -221,6 +337,10 @@ class CLIMenu(object):
         return criteria
 
     def basic_search_for_menu(self):
+        """
+        This method loads the options that belong to search for menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -234,6 +354,10 @@ class CLIMenu(object):
         return criteria
 
     def basic_search_for_criteria(self):
+        """
+        This method loads the options that belong to search criteria menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -244,6 +368,10 @@ class CLIMenu(object):
         return criteria
 
     def basic_search_in_path(self):
+        """
+        This method loads the options that belong to search in menu and gets the option selected by the user
+        :return: criteria
+        """
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
         print("Basic Search - Introduce the folder path:")
@@ -251,6 +379,10 @@ class CLIMenu(object):
         return criteria
 
     def basic_summary_menu(self):
+        """
+        This method loads the options that belong to search summary menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -268,6 +400,10 @@ class CLIMenu(object):
         return criteria
 
     def results_menu(self):
+        """
+        This method loads the options that belong to results menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -293,6 +429,10 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_name_menu(self):
+        """
+        This method loads the options that belong to advanced search for name menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -306,6 +446,10 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_name_criteria(self):
+        """
+        This method loads the options that belong to advanced search for name criteria menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -316,6 +460,11 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_extension_criteria(self):
+        """
+        This method loads the options that belong to advanced search for extension menu and gets the option selected
+        by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -326,6 +475,11 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_size_menu(self):
+        """
+        This method loads the options that belong to advanced search for size menu and gets the option selected
+        by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -339,6 +493,11 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_size_criteria(self):
+        """
+        This method loads the options that belong to advanced search for size criteria menu and gets the option
+        selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -349,6 +508,11 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_owner_criteria(self):
+        """
+        This method loads the options that belong to advanced search for owner criteria menu and gets the option
+        selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -359,6 +523,11 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_date_operator_menu(self):
+        """
+        This method loads the options that belong to advanced search for date operator menu and gets the option
+        selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -372,6 +541,11 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_date_criteria_menu(self):
+        """
+        This method loads the options that belong to advanced search for date crieria menu and gets the option
+        selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -385,6 +559,11 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_for_date_criteria(self):
+        """
+        This method loads the options that belong to advanced search for date criteria menu and gets the option s
+        elected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -399,6 +578,11 @@ class CLIMenu(object):
         return datetime_criteria
 
     def advanced_search_for_content_criteria(self):
+        """
+        This method loads the options that belong to advanced search for content criteria menu and gets the option
+        selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -409,6 +593,10 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_in_menu(self):
+        """
+        This method loads the options that belong to advanced search in menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -422,6 +610,11 @@ class CLIMenu(object):
         return criteria
 
     def advanced_search_in_criteria_path(self):
+        """
+        This method loads the options that belong to advanced search in criteria menu and gets the option selected
+        by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -432,6 +625,10 @@ class CLIMenu(object):
         return criteria
 
     def advanced_summary_menu(self):
+        """
+        This method loads the options that belong to advanced summary menu and gets the option selected by the user
+        :return: criteria
+        """
         logger.info("Starting the method")
         os.system('cls' if os.name == 'nt' else 'clear')
         print(self.MENU_TITLE)
@@ -458,6 +655,10 @@ class CLIMenu(object):
         return criteria
 
     def clean_summary_data_entry_items_dict(self):
+        """
+        This method do a clean up of the  the advanced_summary_data_entry_items dictionary
+        :return: none
+        """
         self.advanced_summary_data_entry_items["search_for_name"] = ""
         self.advanced_summary_data_entry_items["search_for_name_criteria"] = ""
         self.advanced_summary_data_entry_items["search_for_extension_criteria"] = ""
