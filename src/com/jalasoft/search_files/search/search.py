@@ -1,6 +1,7 @@
 from src.com.jalasoft.search_files.search.factory_asset import FactoryAsset
 from src.com.jalasoft.search_files.search.file import File
 from src.com.jalasoft.search_files.search.directory import Directory
+from src.com.jalasoft.search_files.utils.search_validation import SearchValidation
 from src.com.jalasoft.search_files.utils.logging_config import logger
 import definition
 
@@ -8,7 +9,7 @@ import definition
 class Search(object):
     """ Class Search """
     def __init__(self):
-        pass
+        self.search_validation = SearchValidation()
 
     def start_a_search(self, search_criteria):
         """Return all directories and files that were true with search criteria
@@ -132,18 +133,18 @@ class Search(object):
         for item in actual_search_list:
             if which_search == 0:
                 if isinstance(item, File):
-                    if common_name in item.get_file_name():
+                    if self.search_validation.string1_exists_within_string2(common_name, item.get_file_name(), True):
                         result_asert_list.append(item)
                 elif isinstance(item, Directory):
-                    if common_name in item.get_dir_name():
+                    if self.search_validation.string1_exists_within_string2(common_name, item.get_dir_name(), True):
                         result_asert_list.append(item)
             elif which_search == 2:
                 if isinstance(item, File):
-                    if common_name in item.get_file_name():
+                    if self.search_validation.string1_exists_within_string2(common_name, item.get_file_name(), True):
                         result_asert_list.append(item)
             elif which_search == 1:
                 if isinstance(item, Directory):
-                    if common_name in item.get_dir_name():
+                    if self.search_validation.string1_exists_within_string2(common_name, item.get_dir_name(), True):
                         result_asert_list.append(item)
         logger.info("Ending the method")
         return result_asert_list
@@ -169,26 +170,26 @@ class Search(object):
             if which_search == 0:
                 if isinstance(item, File):
                     if extension != "":
-                        if file_name == item.get_file_name() and extension == item.get_extension():
+                        if self.search_validation.is_string1_equal_to_string2(file_name, item.get_file_name(), True) and extension == item.get_extension():
                             result_asert_list.append(item)
                     else:
-                        if file_name == item.get_file_name():
+                        if self.search_validation.is_string1_equal_to_string2(file_name, item.get_file_name(), True):
                             result_asert_list.append(item)
                 elif isinstance(item, Directory):
-                    if common_name == item.get_dir_name():
+                    if self.search_validation.is_string1_equal_to_string2(common_name, item.get_dir_name(), True):
                         result_asert_list.append(item)
             elif which_search == 2:
                 if isinstance(item, File):
                     file_name, separator, extension = common_name.partition(".")
                     if extension != "":
-                        if file_name == item.get_file_name() and extension == item.get_extension():
+                        if self.search_validation.is_string1_equal_to_string2(file_name, item.get_file_name(), True) and extension == item.get_extension():
                             result_asert_list.append(item)
                     else:
-                        if common_name == item.get_file_name():
+                        if self.search_validation.is_string1_equal_to_string2(common_name, item.get_file_name(), True):
                             result_asert_list.append(item)
             elif which_search == 1:
                 if isinstance(item, Directory):
-                    if common_name == item.get_dir_name():
+                    if self.search_validation.is_string1_equal_to_string2(common_name, item.get_dir_name(), True):
                         result_asert_list.append(item)
         logger.info("Ending the method")
         return result_asert_list
@@ -211,11 +212,10 @@ class Search(object):
             extension = common_extension
         for item in actual_search_list:
             if isinstance(item, File):
-                if extension == item.get_extension():
+                if self.search_validation.is_string1_equal_to_string2(extension, item.get_extension(), False):
                     result_asert_list.append(item)
         logger.info("Ending the method")
         return result_asert_list
-
 
     def search_files_by_size(self, actual_search_list, less_size, bigger_size):
         """
@@ -232,15 +232,14 @@ class Search(object):
         result_asert_list = []
         for item in actual_search_list:
             if isinstance(item, File):
-                item_mb = item.get_size() / (1024 * 1024)
                 if less_size != 0 and bigger_size != 0:
-                    if less_size >= item_mb >= bigger_size:
+                    if self.search_validation.is_less_than_and_bigger_than_or_equal(item.get_size(), less_size, bigger_size):
                         result_asert_list.append(item)
                 elif less_size != 0 and bigger_size == 0:
-                    if item_mb <= less_size :
+                    if self.search_validation.is_less_than_or_equal(item.get_size(), less_size):
                         result_asert_list.append(item)
                 elif less_size == 0 and bigger_size != 0:
-                    if item_mb >= bigger_size :
+                    if self.search_validation.is_bigger_than_other(item.get_size(), bigger_size):
                         result_asert_list.append(item)
         logger.info("Ending the method")
         return result_asert_list

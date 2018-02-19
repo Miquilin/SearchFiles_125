@@ -78,13 +78,27 @@ class SearchValidation(object):
         logger.info("Starting the method")
         num_bit = bitmath.Bit(bit_size)
         num_mega_bit = bitmath.Mib(mega_bit_size)
-        if num_bit <= num_mega_bit:
+        if num_bit.to_MiB() <= num_mega_bit:
             boolean_contain = True
         else:
             boolean_contain = False
         logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
+
+    def is_less_than_and_bigger_than_or_equal(self, bit_size, mega_bit_size_less, mega_bit_size_bigger):
+        logger.info("Starting the method")
+        num_bit = bitmath.Bit(bit_size)
+        num_mega_bit_less = bitmath.Mib(mega_bit_size_less)
+        num_mega_bit_bigger = bitmath.Mib(mega_bit_size_bigger)
+        if num_mega_bit_less >= num_bit.to_MiB() >= num_mega_bit_bigger:
+            boolean_contain = True
+        else:
+            boolean_contain = False
+        logger.debug("The value returned is: %s", boolean_contain)
+        logger.info("Ending the method")
+        return boolean_contain
+
 
     def is_bigger_than_other(self, bit_size, mega_bit_size):
         """
@@ -97,7 +111,7 @@ class SearchValidation(object):
         logger.info("Starting the method")
         num_bit = bitmath.Bit(bit_size)
         num_mega_bit = bitmath.Mib(mega_bit_size)
-        if num_bit < num_mega_bit:
+        if num_bit.to_MiB() > num_mega_bit:
             boolean_contain = True
         else:
             boolean_contain = False
