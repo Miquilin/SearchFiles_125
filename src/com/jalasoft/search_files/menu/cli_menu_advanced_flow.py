@@ -11,6 +11,11 @@ import sys
 class CLIMenuAdvancedFlow(object):
 
     def __init__(self):
+        """
+        This method is the constructor of the class
+        :param None
+        :return None
+        """
         logger.info("Starting the method")
         self.cli_menu = CLIMenu()
         self.validator = Validation()
@@ -19,6 +24,12 @@ class CLIMenuAdvancedFlow(object):
         logger.info("Ending the method")
 
     def show_menu(self, option):
+        """
+        show_menu method permits to load a specific menu according to the option provided and gets the option selected
+        by the user.
+        :param option:
+        :return: value
+        """
         logger.info("Starting the method")
         if option == 0:
             logger.debug("Option selected: %s. Ending the application.", option)
@@ -72,6 +83,11 @@ class CLIMenuAdvancedFlow(object):
         return value
 
     def main_menu_validation(self, option):
+        """
+        This method does the validations on main menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
                 self.cli_menu.main_menu_items) - 1, 1) and self.validator.has_valid_characters(option):
@@ -84,6 +100,11 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def get_results_dictionary(self):
+        """
+        This method returns the results_data dictionary
+        :param: None
+        :return: result_dictionary
+        """
         logger.info("Starting the method")
         result_dictionary = self.cli_menu.results_data
         logger.debug("The dictionary returned is: %s", result_dictionary)
@@ -91,6 +112,11 @@ class CLIMenuAdvancedFlow(object):
         return result_dictionary
 
     def advanced_search_for_name_menu_validation(self, option):
+        """
+        This method does the validations on Search for name menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
                 self.cli_menu.advanced_search_for_name_items) - 1, 1):
@@ -103,30 +129,43 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def advanced_search_for_name_criteria_validation(self, option):
+        """
+        This method does the validations on Search for name criteria menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
-        return True
-        # if self.validator.has_valid_characters(option):
-        #     logger.debug("The value returned is: %s", True)
-        #     logger.info("Ending the method")
-        #     return True
-        # else:
-        #     logger.debug("The value returned is: %s", False)
-        #     logger.info("Ending the method")
-        #     return False
+        if self.validator.has_valid_characters(option):
+            logger.debug("The value returned is: %s", True)
+            logger.info("Ending the method")
+            return True
+        else:
+            logger.debug("The value returned is: %s", False)
+            logger.info("Ending the method")
+            return False
 
     def advanced_search_for_extension_criteria_validation(self, option):
+        """
+        This method does the validations on Search for extension menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
-        return True
-        # if self.validator.has_valid_characters(option):
-        #     logger.debug("The value returned is: %s", True)
-        #     logger.info("Ending the method")
-        #     return True
-        # else:
-        #     logger.debug("The value returned is: %s", False)
-        #     logger.info("Ending the method")
-        #     return False
+        if self.validator.has_valid_characters_adv(option):
+            logger.debug("The value returned is: %s", True)
+            logger.info("Ending the method")
+            return True
+        else:
+            logger.debug("The value returned is: %s", False)
+            logger.info("Ending the method")
+            return False
 
     def advanced_search_for_size_menu_validation(self, option):
+        """
+        This method does the validations on Search for size menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
                 self.cli_menu.advanced_search_for_size_items) - 1, 1):
@@ -139,30 +178,43 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def advanced_search_for_size_criteria_validation(self, option):
+        """
+        This method does the validations on Search for size criteria menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
-        return True
-        # if self.validator.has_valid_characters(option):
-        #     logger.debug("The value returned is: %s", True)
-        #     logger.info("Ending the method")
-        #     return True
-        # else:
-        #     logger.debug("The value returned is: %s", False)
-        #     logger.info("Ending the method")
-        #     return False
+        if self.validator.has_valid_characters(option) and self.validator.is_number(option):
+            logger.debug("The value returned is: %s", True)
+            logger.info("Ending the method")
+            return True
+        else:
+            logger.debug("The value returned is: %s", False)
+            logger.info("Ending the method")
+            return False
 
     def advanced_search_for_owner_criteria_validation(self, option):
+        """
+        This method does the validations on Search for owner criteria menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
-        return True
-        # if self.validator.has_valid_characters(option):
-        #     logger.debug("The value returned is: %s", True)
-        #     logger.info("Ending the method")
-        #     return True
-        # else:
-        #     logger.debug("The value returned is: %s", False)
-        #     logger.info("Ending the method")
-        #     return False
+        if self.validator.has_valid_characters_adv(option):
+            logger.debug("The value returned is: %s", True)
+            logger.info("Ending the method")
+            return True
+        else:
+            logger.debug("The value returned is: %s", False)
+            logger.info("Ending the method")
+            return False
 
     def advanced_search_for_date_criteria_menu_validation(self, option):
+        """
+        This method does the validations on Search for date criteria menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
                 self.cli_menu.advanced_search_for_date_criteria_items) - 1, 1):
@@ -175,6 +227,11 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def advanced_search_for_date_operator_menu_validation(self, option):
+        """
+        This method does the validations on Search for date operator menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
                 self.cli_menu.advanced_search_for_date_operator_items) - 1, 1):
@@ -187,30 +244,43 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def advanced_search_for_date_criteria_validation(self, option):
+        """
+        This method does the validations on Search for date criteria menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
-        return True
-        # if self.validator.has_valid_characters(option):
-        #     logger.debug("The value returned is: %s", True)
-        #     logger.info("Ending the method")
-        #     return True
-        # else:
-        #     logger.debug("The value returned is: %s", False)
-        #     logger.info("Ending the method")
-        #     return False
+        if self.validator.is_valid_date(option):
+            logger.debug("The value returned is: %s", True)
+            logger.info("Ending the method")
+            return True
+        else:
+            logger.debug("The value returned is: %s", False)
+            logger.info("Ending the method")
+            return False
 
     def advanced_search_for_content_criteria_validation(self, option):
+        """
+        This method does the validations on Search for content criteria menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
-        return True
-        # if self.validator.has_valid_characters(option):
-        #     logger.debug("The value returned is: %s", True)
-        #     logger.info("Ending the method")
-        #     return True
-        # else:
-        #     logger.debug("The value returned is: %s", False)
-        #     logger.info("Ending the method")
-        #     return False
+        if self.validator.has_valid_characters_adv(option):
+            logger.debug("The value returned is: %s", True)
+            logger.info("Ending the method")
+            return True
+        else:
+            logger.debug("The value returned is: %s", False)
+            logger.info("Ending the method")
+            return False
 
     def advanced_search_in_menu_validation(self, option):
+        """
+        This method does the validations on Search in menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
                 self.cli_menu.advanced_search_in_items) - 1, 1):
@@ -223,6 +293,11 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def advanced_search_in_path_criteria_validation(self, option):
+        """
+        This method does the validations on Search in criteria size menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_path_valid(option):
             logger.debug("The value returned is: %s", True)
@@ -234,6 +309,11 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def advanced_summary_menu_validation(self, option):
+        """
+        This method does the validations on Summary menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
                 self.cli_menu.summary_items) - 1, 1):
@@ -246,6 +326,11 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def advanced_result_menu_validation(self, option):
+        """
+        This method does the validations on Results menu
+        :param option:
+        :return: True / False
+        """
         logger.info("Starting the method")
         if self.validator.is_number(option) and self.validator.is_the_range(option, self.cli_menu.get_dictionary_size(
                 self.cli_menu.result_items) - 1, 1):
@@ -258,6 +343,11 @@ class CLIMenuAdvancedFlow(object):
             return False
 
     def get_advanced_summary_data_items(self, key):
+        """
+        This method permits to get a value from advanced_summary_data_entry_items dictionary
+        :param key:
+        :return: summary_data_item
+        """
         logger.info("Starting the method")
         summary_data_item = self.cli_menu.get_advanced_summary_data_items(key)
         logger.debug("The value returned is: %s", summary_data_item)
@@ -265,12 +355,23 @@ class CLIMenuAdvancedFlow(object):
         return summary_data_item
 
     def set_advanced_summary_data_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_summary_data_entry_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.cli_menu.set_advanced_summary_data_items(key, value)
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("Ending the method")
 
     def get_advanced_search_for_name_menu_items(self, key):
+        """
+        This method permits to get a value from advanced_search_for_name_items dictionary
+        :param key:
+        :return: search_for_menu_item
+        """
         logger.info("Starting the method")
         search_for_menu_item = self.cli_menu.get_advanced_search_for_name_items(key)
         logger.debug("The value returned is: %s", search_for_menu_item)
@@ -278,11 +379,22 @@ class CLIMenuAdvancedFlow(object):
         return search_for_menu_item
 
     def set_advanced_search_for_name_menu_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_for_name_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.cli_menu.set_advanced_search_for_name_items(key, value)
         logger.info("Ending the method")
 
     def get_advanced_search_for_size_menu_items(self, key):
+        """
+        This method permits to get a value from advanced_search_for_size_items dictionary
+        :param key:
+        :return: search_for_size_item
+        """
         logger.info("Starting the method")
         search_for_size_item = self.cli_menu.get_advanced_search_for_size_items(key)
         logger.debug("The value returned is: %s", search_for_size_item)
@@ -290,12 +402,23 @@ class CLIMenuAdvancedFlow(object):
         return search_for_size_item
 
     def set_advanced_search_for_size_menu_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_for_size_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.cli_menu.set_advanced_search_for_size_items(key, value)
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("Ending the method")
 
     def get_advanced_search_for_date_operator_menu_items(self, key):
+        """
+        This method permits to get a value from advanced_search_for_date_operator_items dictionary
+        :param key:
+        :return: search_for_date_item
+        """
         logger.info("Starting the method")
         search_for_date_item = self.cli_menu.get_advanced_search_for_date_operator_items(key)
         logger.debug("The value returned is: %s", search_for_date_item)
@@ -303,12 +426,23 @@ class CLIMenuAdvancedFlow(object):
         return search_for_date_item
 
     def set_advanced_search_for_date_operator_menu_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_for_date_operators_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.cli_menu.set_advanced_search_for_date_operator_items(key, value)
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("Ending the method")
 
     def get_advanced_search_for_date_criteria_menu_items(self, key):
+        """
+        This method permits to get a value from advanced_search_for_date_criteria_items dictionary
+        :param key:
+        :return: search_for_date_item
+        """
         logger.info("Starting the method")
         search_for_date_item = self.cli_menu.get_advanced_search_for_date_criteria_items(key)
         logger.debug("The value returned is: %s", search_for_date_item)
@@ -316,12 +450,23 @@ class CLIMenuAdvancedFlow(object):
         return search_for_date_item
 
     def set_advanced_search_for_date_criteria_menu_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_for_date_criteria_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.cli_menu.set_advanced_search_for_date_criteria_items(key, value)
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("Ending the method")
 
     def get_advanced_search_in_items(self, key):
+        """
+        This method permits to get a value from advanced_search_in_items dictionary
+        :param key:
+        :return: search_in_item
+        """
         logger.info("Starting the method")
         search_in_item = self.cli_menu.get_advanced_search_in_items(key)
         logger.debug("The value returned is: %s", search_in_item)
@@ -329,12 +474,22 @@ class CLIMenuAdvancedFlow(object):
         return search_in_item
 
     def set_advanced_search_in_items(self, key, value):
+        """
+        This method permits to set/update a value in advanced_search_in_items dictionary
+        :param key:
+        :param value:
+        :return: None
+        """
         logger.info("Starting the method")
         self.cli_menu.set_advanced_search_in_items(key, value)
         logger.debug("The data updated into the dictionary is: key: %s, Value: %s", key, value)
         logger.info("Ending the method")
 
     def start_search_process(self):
+        """
+        This method configures the search_criteria parameters and start the search process
+        :return: None
+        """
         logger.info("Starting the method")
         self.files = []
         self.folders = []
@@ -407,6 +562,11 @@ class CLIMenuAdvancedFlow(object):
         logger.info("Ending the method")
 
     def save_search_result(self, search_result):
+        """
+        This method saves the search result into the set_results_data dictionary
+        :param search_result:
+        :return: None
+        """
         logger.info("Starting the method")
         for sr in search_result:
             if isinstance(sr, File):
@@ -422,4 +582,8 @@ class CLIMenuAdvancedFlow(object):
         logger.info("Ending the method")
 
     def clean_advanced_summary_items(self):
+        """
+        This method do a clean up of the advanced_summary_data_entry_items dictionary
+        :return:
+        """
         self.cli_menu.clean_summary_data_entry_items_dict()

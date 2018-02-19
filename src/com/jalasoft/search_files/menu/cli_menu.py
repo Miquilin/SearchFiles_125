@@ -391,12 +391,8 @@ class CLIMenu(object):
         print("Advanced Search - Introduce the 'Date' criteria in YYYY-MM-DD hh:mm:ss format:")
         criteria = input(" >>  ")
         logger.debug("The option selected is: %s", criteria)
-        date_criteria, time_criteria = map(str, criteria.split(' '))
-        year, month, day = map(int, date_criteria.split('-'))
-        hour, minutes, seconds = map(int, time_criteria.split(':'))
-        datetime_criteria = datetime.datetime(year, month, day, hour, minutes, seconds)
         logger.info("Ending the method")
-        return datetime_criteria
+        return criteria
 
     def advanced_search_for_content_criteria(self):
         logger.info("Starting the method")

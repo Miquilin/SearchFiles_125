@@ -1,6 +1,7 @@
 from src.com.jalasoft.search_files.menu.cli_menu_basic_flow import CLIMenuBasicFlow
 from src.com.jalasoft.search_files.menu.cli_menu_advanced_flow import CLIMenuAdvancedFlow
 from src.com.jalasoft.search_files.utils.copy_2_clipboard import Copy2ClipBoard
+from src.com.jalasoft.search_files.utils.datetime_utility import DateTimeUtility
 import sys
 
 
@@ -222,8 +223,9 @@ class SearchFile(object):
                     choice = advanced_menu.show_menu(9)
             # Advanced Search - Search For Date Text Criteria [menu 10]
             while go_to_search_for_content_criteria == False:
-                if advanced_menu.advanced_search_for_content_criteria_validation(choice):
-                    advanced_menu.set_advanced_summary_data_items("search_for_date_text_criteria", choice)
+                if advanced_menu.advanced_search_for_date_criteria_validation(choice):
+                    date_time = DateTimeUtility()
+                    advanced_menu.set_advanced_summary_data_items("search_for_date_text_criteria", date_time.convert_string_to_datetime(choice))
                     go_to_search_for_content_criteria = True
                     go_to_search_in_menu = False
                     choice = advanced_menu.show_menu(11)
