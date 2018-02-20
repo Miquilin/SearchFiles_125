@@ -135,7 +135,7 @@ class CLIMenuAdvancedFlow(object):
         :return: True / False
         """
         logger.info("Starting the method")
-        if self.validator.has_valid_characters(option):
+        if self.validator.has_valid_characters_adv(option):
             logger.debug("The value returned is: %s", True)
             logger.info("Ending the method")
             return True
