@@ -21,9 +21,9 @@ class DateTimeUtility(object):
             hour, minutes, seconds = map(int, time_criteria.split(':'))
             datetime_criteria = datetime.datetime(year, month, day, hour, minutes, seconds)
         except Exception as inst:
+            logger.info("An exception has been generated: %s", inst)
             logger.debug("The exception instance is: %s", type(inst))
             logger.debug ("Arguments stored in .args are: %s", inst.args)
-            logger.debug("An exception has been generated: %s", inst)
             datetime_criteria = ""
         logger.debug("The datetime criteria returned is: %s", datetime_criteria)
         logger.info("Ending the method")
