@@ -98,10 +98,10 @@ class CLIMenuTest(unittest.TestCase):
         result_validation = menu.advanced_search_for_name_criteria_validation("_!#$%&/()=?¡[]_:;'¿{},.-")
         self.assertEqual(result_validation, False)
 
-    def test_advanced_search_for_name_criteria_validation_returns_true_when_option_provided_is_void(self):
+    def test_advanced_search_for_name_criteria_validation_returns_false_when_option_provided_is_void(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_for_name_criteria_validation("")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_name_criteria_validation_returns_true_when_option_provided_is_none(self):
         menu = CLIMenuAdvancedFlow()
@@ -173,25 +173,25 @@ class CLIMenuTest(unittest.TestCase):
         result_validation = menu.advanced_search_for_size_criteria_validation("6125")
         self.assertEqual(result_validation, True)
 
-    def test_advanced_search_for_size_criteria_validation_returns_true_when_option_provided_has_a_string_char(self):
+    def test_advanced_search_for_size_criteria_validation_returns_false_when_option_provided_has_a_string_char(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_for_size_criteria_validation("MyOption")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_size_criteria_validation_returns_false_when_option_provided_has_non_valid_chars(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_for_size_criteria_validation("_!#$%&/()=?¡[]_:;'¿{},.-")
         self.assertEqual(result_validation, False)
 
-    def test_advanced_search_for_size_criteria_validation_returns_true_when_option_provided_is_void(self):
+    def test_advanced_search_for_size_criteria_validation_returns_false_when_option_provided_is_void(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_for_size_criteria_validation("")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
-    def test_advanced_search_for_size_criteria_validation_returns_true_when_option_provided_is_none(self):
+    def test_advanced_search_for_size_criteria_validation_returns_false_when_option_provided_is_none(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_size_criteria_validation(None)
-        self.assertEqual(result_validation, True)
+        result_validation = menu.advanced_search_for_size_criteria_validation(str(None))
+        self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_owner_criteria_validation_returns_true_when_option_provided_is_number(self):
         menu = CLIMenuAdvancedFlow()
@@ -253,30 +253,30 @@ class CLIMenuTest(unittest.TestCase):
         result_validation = menu.advanced_search_for_date_criteria_menu_validation("_!#$%&/()=?¡[]_:;'¿{},.-")
         self.assertEqual(result_validation, False)
 
-    def test_advanced_search_for_date_criteria_validation_returns_true_when_option_provided_is_number(self):
+    def test_advanced_search_for_date_criteria_validation_returns_false_when_option_provided_is_number(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_for_date_criteria_validation("6125")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
-    def test_advanced_search_for_date_criteria_validation_returns_true_when_option_provided_has_a_string_char(self):
+    def test_advanced_search_for_date_criteria_validation_returns_false_when_option_provided_has_a_string_char(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_for_date_criteria_validation("MyOption")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_date_criteria_validation_returns_false_when_option_provided_has_non_valid_chars(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_for_date_criteria_validation("_!#$%&/()=?¡[]_:;'¿{},.-")
         self.assertEqual(result_validation, False)
 
-    def test_advanced_search_for_date_criteria_validation_returns_true_when_option_provided_is_void(self):
+    def test_advanced_search_for_date_criteria_validation_returns_false_when_option_provided_is_void(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_for_date_criteria_validation("")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
-    def test_advanced_search_for_date_criteria_validation_returns_true_when_option_provided_is_none(self):
+    def test_advanced_search_for_date_criteria_validation_returns_false_when_option_provided_is_none(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_for_date_criteria_validation(None)
-        self.assertEqual(result_validation, True)
+        result_validation = menu.advanced_search_for_date_criteria_validation(str(None))
+        self.assertEqual(result_validation, False)
 
     def test_advanced_search_for_content_criteria_validation_returns_true_when_option_provided_is_number(self):
         menu = CLIMenuAdvancedFlow()
@@ -338,30 +338,30 @@ class CLIMenuTest(unittest.TestCase):
         result_validation = menu.advanced_search_in_menu_validation("_!#$%&/()=?¡[]_:;'¿{},.-")
         self.assertEqual(result_validation, False)
 
-    def test_advanced_search_in_path_criteria_validation_returns_true_when_option_provided_is_number(self):
+    def test_advanced_search_in_path_criteria_validation_returns_false_when_option_provided_is_number(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_in_path_criteria_validation("6125")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
-    def test_advanced_search_in_path_criteria_validation_returns_true_when_option_provided_has_a_string_char(self):
+    def test_advanced_search_in_path_criteria_validation_returns_False_when_option_provided_has_a_string_char(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_in_path_criteria_validation("MyOption")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
     def test_advanced_search_in_path_criteria_validation_returns_false_when_option_provided_has_non_valid_chars(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_in_path_criteria_validation("_!#$%&/()=?¡[]_:;'¿{},.-")
         self.assertEqual(result_validation, False)
 
-    def test_advanced_search_in_path_criteria_validation_returns_true_when_option_provided_is_void(self):
+    def test_advanced_search_in_path_criteria_validation_returns_false_when_option_provided_is_void(self):
         menu = CLIMenuAdvancedFlow()
         result_validation = menu.advanced_search_in_path_criteria_validation("")
-        self.assertEqual(result_validation, True)
+        self.assertEqual(result_validation, False)
 
     def test_advanced_search_in_path_criteria_validation_returns_true_when_option_provided_is_none(self):
         menu = CLIMenuAdvancedFlow()
-        result_validation = menu.advanced_search_in_path_criteria_validation(None)
-        self.assertEqual(result_validation, True)
+        result_validation = menu.advanced_search_in_path_criteria_validation(str(None))
+        self.assertEqual(result_validation, False)
 
     def test_advanced_summary_menu_validation_returns_true_when_option_provided_is_number(self):
         menu = CLIMenuAdvancedFlow()
@@ -573,11 +573,6 @@ class CLIMenuTest(unittest.TestCase):
         option = menu.get_advanced_search_for_date_operator_menu_items("2")
         self.assertEqual(option, "Minor than 'X' date")
 
-    def test_get_none_option_value_from_advanced_search_for_date_items_dict(self):
-        menu = CLIMenuAdvancedFlow()
-        option = menu.get_advanced_search_for_date_operator_menu_items("3")
-        self.assertEqual(option, "None")
-
     def test_get_exit_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenuAdvancedFlow()
         option = menu.get_advanced_search_for_date_operator_menu_items("0")
@@ -603,3 +598,19 @@ class CLIMenuTest(unittest.TestCase):
         menu = CLIMenuAdvancedFlow()
         option = menu.get_advanced_search_in_items("0")
         self.assertEqual(option, "Exit")
+
+    def test_clean_summary_data_entry_items_dict_cleans_the_dictionary(self):
+        menu = CLIMenuAdvancedFlow()
+        menu.clean_advanced_summary_items()
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_name"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_name_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_extension_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_size"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_size_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_owner_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_date_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_date_operation_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_date_text_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_content_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_in"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_in_criteria"), "")
