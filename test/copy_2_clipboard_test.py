@@ -35,13 +35,13 @@ class Copy2ClipBoardTest(unittest.TestCase):
         }
         json_expected = json.dumps(dictionary, ensure_ascii=False)
         copy2clipboard = Copy2ClipBoard()
-        json_result = copy2clipboard.copy_to_clip(dictionary)
+        copy2clipboard.copy_to_clip(dictionary)
         self.assertEqual(pyperclip.paste(), json_expected)
 
     def test_copy_to_clip_is_copying_the_json_structure_generated_from_a_void_dictionary_in_memory(self):
         dictionary = {}
         json_expected = json.dumps(dictionary, ensure_ascii=False)
         copy2clipboard = Copy2ClipBoard()
-        json_result = copy2clipboard.copy_to_clip(dictionary)
+        copy2clipboard.copy_to_clip(dictionary)
         self.assertEqual(pyperclip.paste(), json_expected)
 

@@ -7,4 +7,4 @@ logging.config.fileConfig(CONFIG_PATH)
 logger = logging.getLogger('SearchFiles')
 
 # Set default logger's level
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)

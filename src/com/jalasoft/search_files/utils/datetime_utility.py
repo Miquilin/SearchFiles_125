@@ -15,10 +15,16 @@ class DateTimeUtility(object):
         """
         logger.info("Starting the method")
         logger.debug("The datetime string is: %s", datetime_string)
-        date_criteria, time_criteria = map(str, datetime_string.split(' '))
-        year, month, day = map(int, date_criteria.split('-'))
-        hour, minutes, seconds = map(int, time_criteria.split(':'))
-        datetime_criteria = datetime.datetime(year, month, day, hour, minutes, seconds)
+        try:
+            date_criteria, time_criteria = map(str, datetime_string.split(' '))
+            year, month, day = map(int, date_criteria.split('-'))
+            hour, minutes, seconds = map(int, time_criteria.split(':'))
+            datetime_criteria = datetime.datetime(year, month, day, hour, minutes, seconds)
+        except Exception as inst:
+            logger.info("An exception has been generated: %s", inst)
+            logger.debug("The exception instance is: %s", type(inst))
+            logger.debug ("Arguments stored in .args are: %s", inst.args)
+            datetime_criteria = ""
         logger.debug("The datetime criteria returned is: %s", datetime_criteria)
         logger.info("Ending the method")
         return datetime_criteria
