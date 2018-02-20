@@ -637,6 +637,7 @@ class CLIMenuTest(unittest.TestCase):
 
     def test_clean_summary_data_entry_items_dict_cleans_the_dictionary(self):
         menu = CLIMenu()
+        menu.clean_summary_data_entry_items_dict()
         self.assertEqual(menu.get_advanced_summary_data_items("search_for_name"), "")
         self.assertEqual(menu.get_advanced_summary_data_items("search_for_name_criteria"), "")
         self.assertEqual(menu.get_advanced_summary_data_items("search_for_extension_criteria"), "")
