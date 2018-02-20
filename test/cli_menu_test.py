@@ -122,11 +122,6 @@ class CLIMenuTest(unittest.TestCase):
         option = menu.get_advanced_search_for_date_operator_items("2")
         self.assertEqual(option, "Minor than 'X' date")
 
-    def test_get_none_option_value_from_advanced_search_for_date_items_dict(self):
-        menu = CLIMenu()
-        option = menu.get_advanced_search_for_date_operator_items("3")
-        self.assertEqual(option, "None")
-
     def test_get_exit_option_value_from_advanced_search_for_date_items_dict(self):
         menu = CLIMenu()
         option = menu.get_advanced_search_for_date_operator_items("0")
@@ -501,24 +496,44 @@ class CLIMenuTest(unittest.TestCase):
         assert menu.advanced_search_for_owner_criteria() == '*_-\[]/()'
 
     @mock.patch('builtins.input', return_value='1')
-    def test_advanced_search_for_date_menu_is_retuning_a_numeric_option_(self, input):
+    def test_advanced_search_for_date_criteria_menu_is_retuning_a_numeric_option_(self, input):
         menu = CLIMenu()
-        assert menu.advanced_search_for_date_menu() == '1'
+        assert menu.advanced_search_for_date_criteria_menu() == '1'
 
     @mock.patch('builtins.input', return_value='AnyOption')
-    def test_advanced_search_for_date_menu_is_retuning_a_characters_option(self, input):
+    def test_advanced_search_for_date_critieria_menu_is_retuning_a_characters_option(self, input):
         menu = CLIMenu()
-        assert menu.advanced_search_for_date_menu() == 'AnyOption'
+        assert menu.advanced_search_for_date_criteria_menu() == 'AnyOption'
 
     @mock.patch('builtins.input', return_value='')
-    def test_advanced_search_for_date_menu_is_retuning_a_void_option(self, input):
+    def test_advanced_search_for_date_criteria_menu_is_retuning_a_void_option(self, input):
         menu = CLIMenu()
-        assert menu.advanced_search_for_date_menu() == ''
+        assert menu.advanced_search_for_date_criteria_menu() == ''
 
     @mock.patch('builtins.input', return_value='*_-\[]/()')
-    def test_advanced_search_for_date_menu_is_retuning_a_valid_special_characters_option(self, input):
+    def test_advanced_search_for_date_criteria_menu_is_retuning_a_valid_special_characters_option(self, input):
         menu = CLIMenu()
-        assert menu.advanced_search_for_date_menu() == '*_-\[]/()'
+        assert menu.advanced_search_for_date_criteria_menu() == '*_-\[]/()'
+
+    @mock.patch('builtins.input', return_value='1')
+    def test_advanced_search_for_date_operator_menu_is_retuning_a_numeric_option_(self, input):
+        menu = CLIMenu()
+        assert menu.advanced_search_for_date_operator_menu() == '1'
+
+    @mock.patch('builtins.input', return_value='AnyOption')
+    def test_advanced_search_for_date_operator_menu_is_retuning_a_characters_option(self, input):
+        menu = CLIMenu()
+        assert menu.advanced_search_for_date_operator_menu() == 'AnyOption'
+
+    @mock.patch('builtins.input', return_value='')
+    def test_advanced_search_for_date_operator_menu_is_retuning_a_void_option(self, input):
+        menu = CLIMenu()
+        assert menu.advanced_search_for_date_operator_menu() == ''
+
+    @mock.patch('builtins.input', return_value='*_-\[]/()')
+    def test_advanced_search_for_date_operator_menu_is_retuning_a_valid_special_characters_option(self, input):
+        menu = CLIMenu()
+        assert menu.advanced_search_for_date_operator_menu() == '*_-\[]/()'
 
     @mock.patch('builtins.input', return_value='1')
     def test_advanced_search_for_date_criteria_is_retuning_a_numeric_option_(self, input):
@@ -619,3 +634,18 @@ class CLIMenuTest(unittest.TestCase):
     def test_advanced_summary_menu_is_retuning_a_valid_special_characters_option(self, input):
         menu = CLIMenu()
         assert menu.advanced_summary_menu() == '*_-\[]/()'
+
+    def test_clean_summary_data_entry_items_dict_cleans_the_dictionary(self):
+        menu = CLIMenu()
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_name"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_name_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_extension_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_size"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_size_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_owner_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_date_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_date_operation_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_date_text_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_for_content_criteria"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_in"), "")
+        self.assertEqual(menu.get_advanced_summary_data_items("search_in_criteria"), "")
