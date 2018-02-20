@@ -91,6 +91,18 @@ class ValidationTest(unittest.TestCase):
         value_boolean = validation.is_path_valid(value_example)
         self.assertFalse(value_boolean)
 
+    def test_is_path_valid_method_returns_false_when_value_is_blank(self):
+        validation = Validation()
+        value_example = "  "
+        value_boolean = validation.is_path_valid(value_example)
+        self.assertFalse(value_boolean)
+
+    def test_is_path_valid_method_returns_false_when_value_contains_unit_disk_and_colon(self):
+        validation = Validation()
+        value_example = "c:"
+        value_boolean = validation.is_path_valid(value_example)
+        self.assertFalse(value_boolean)
+
     def test_has_valid_characters_method_returns_true_when_value_is_numeric(self):
         validation = Validation()
         value_example = "123456789"

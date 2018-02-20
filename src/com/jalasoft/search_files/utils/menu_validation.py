@@ -14,7 +14,6 @@ class Validation(object):
     def is_number(self, string_value):
         """
         This method returns True when the string_value is a positive number otherwise return False
-
         :param string_value:
         :return boolean_contain:
         """
@@ -28,7 +27,6 @@ class Validation(object):
         """
         This method returns True when the number is between upper_limit number and lower_limit number
         otherwise return False
-
         :param number:
         :param upper_limit:
         :param lower_limit:
@@ -47,7 +45,6 @@ class Validation(object):
     def attempt_maximum(self, attempts):
         """
         This method returns True if the attempts number is less than or equal to 5 otherwise return False
-
         :param attempts:
         :return boolean_contain:
         """
@@ -64,13 +61,17 @@ class Validation(object):
     def is_path_valid(self, directory):
         """
         This method returns True when the string is a path valid otherwise return False
-
         :param directory: (a path)
         :return boolean_contain:
         """
         logger.info("Starting the method")
         directory = str(directory)
-        boolean_contain = os.path.exists(directory)
+        regex = re.compile("([aA-zZ]):")
+        match = regex.fullmatch(directory)
+        if match:
+            boolean_contain = False
+        else:
+            boolean_contain = os.path.exists(directory)
         logger.debug("The value returned is: %s", boolean_contain)
         logger.info("Ending the method")
         return boolean_contain
@@ -108,7 +109,6 @@ class Validation(object):
         """
         This method returns True if the str_date contain the following formats %Y-%m-%d %H:%S:%M and y-%m-%d %H:%S:%M
         otherwise return False
-
         :param str_date:
         :return boolean_contain:
         """
@@ -137,7 +137,6 @@ class Validation(object):
     def has_valid_characters_adv(self, string_value):
         """
         this method returns False if string_value contains the following characters |<>"?:\/ otherwise return True
-
         :param string_value:
         :return boolean_contain:
         """
