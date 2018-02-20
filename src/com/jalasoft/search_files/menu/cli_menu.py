@@ -1,4 +1,3 @@
-import datetime
 import os
 from src.com.jalasoft.search_files.utils.logging_config import logger
 
